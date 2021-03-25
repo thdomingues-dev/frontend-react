@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import PageHeader from "./components/PageHeader";
 
 import './styles/global.css';
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const url =
-    process.env.NODE_ENV === "production"
-      ? "/api"
-      : "http://localhost:3001/api";
-
-  useEffect(() => {
-    fetch(`${url}/users`)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(setUsers);
-  }, [url]);
-
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello, Stone!</h1>
-        <p>{JSON.stringify(users)}</p>
+        <PageHeader />
       </header>
     </div>
   );

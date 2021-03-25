@@ -2,8 +2,8 @@ import './styles.css';
 
 const PageHeader = () => {
   return (
-    <header>
-
+    <header className="page-header">
+      <strong>Green Rock</strong>
     </header>
   );
 }
