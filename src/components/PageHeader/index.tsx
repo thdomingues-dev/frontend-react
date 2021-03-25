@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
@@ -8,10 +7,10 @@ const PageHeader = () => {
     <header className="page-header">
       <strong>Green Rock</strong>
 
-      <Link to="/">
+      <div>
         <FiArrowLeft />
         Voltar
-      </Link>
+      </div>
     </header>
   );
 }
