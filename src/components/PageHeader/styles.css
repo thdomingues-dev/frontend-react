@@ -1,0 +1,26 @@
+.page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-top: 2rem;
+  padding: 2rem 6rem;
+}
+
+.page-header strong {
+  font: bold 1.4rem "Rajdhani";
+  color: var(--green-stone);
+}
+
+.page-header .page-back-container {
+  display: flex;
+  align-items: center;
+
+  color: var(--text);
+  font: bold 1.1rem "Rajdhani";
+  text-decoration: none;
+}
+
+.page-header .page-back-container svg{
+  margin-right: 0.5rem;
+}

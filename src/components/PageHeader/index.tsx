@@ -5,9 +5,9 @@ import './styles.css';
 const PageHeader = () => {
   return (
     <header className="page-header">
-      <strong>Green Rock</strong>
+      <strong>GREENROCK</strong>
 
-      <div>
+      <div className="page-back-container">
         <FiArrowLeft />
         Voltar
       </div>
