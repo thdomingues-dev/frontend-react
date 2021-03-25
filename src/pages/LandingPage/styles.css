@@ -27,9 +27,11 @@
 
  .page-container main .group-container h2 {
   color: var(--green-stone);
+  font-weight: bold;
   font-size: 2rem;
  }
 
 .page-container main .group-container .resource-group p {
    margin-top: 1rem;
  }
+ 
