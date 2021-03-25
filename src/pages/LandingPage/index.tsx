@@ -12,8 +12,17 @@ const LandingPage = () => {
       <p>Escolha uma das opções abaixo para continuar.</p>
 
       <main>
-        <h2>Recursos disponíveis</h2>
-        <p>Visualizar usuários</p>
+        <div className="group-container">
+          <h2>Recursos disponíveis</h2>
+
+          <div className="resource-group">
+            <p>{">"} Visualizar usuários</p>
+
+            <p>{">"} Consultar cartões</p>
+
+            <p>{">"} Obter auditoria</p>
+          </div>
+        </div>
       </main>
     </div>
   );
