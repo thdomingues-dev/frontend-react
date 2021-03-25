@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import './styles/global.css';
+
 function App() {
   const [users, setUsers] = useState([]);
   const url =
