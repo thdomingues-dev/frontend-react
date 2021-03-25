@@ -1,8 +1,10 @@
+import PageHeader from '../../components/PageHeader';
+
 import './styles.css';
 
 const LandingPage = () => {
   return (
-    <h1>LandingPage</h1>
+    <PageHeader />
   );
 }
 

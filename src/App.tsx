@@ -1,4 +1,4 @@
-import PageHeader from "./components/PageHeader";
+import LandingPage from './pages/LandingPage';
 
 import './styles/global.css';
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <PageHeader />
+        <LandingPage />
       </header>
     </div>
   );
