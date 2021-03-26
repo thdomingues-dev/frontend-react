@@ -19,7 +19,7 @@ const LandingPage = () => {
           <h2>Recursos disponíveis</h2>
 
           <div className="resource-group">
-            <Link to="/">
+            <Link to="/users">
               <span>
                 <FiChevronRight />
               </span>
