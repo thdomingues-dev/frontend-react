@@ -1,5 +1,27 @@
 .users-container {
   display: flex;
   flex-direction: column;
+
   padding: 0 20rem;
+}
+
+.users-container .users-content {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.users-container .users-content main {
+  flex: 1;
+}
+
+.users-container .users-content main ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  list-style: none;
 }
