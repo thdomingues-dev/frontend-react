@@ -33,7 +33,7 @@ const LandingPage = () => {
               <p> Consultar cartões</p>
             </Link>
 
-            <Link to="/">
+            <Link to="/audits">
               <span>
                 <FiChevronRight />
               </span>
