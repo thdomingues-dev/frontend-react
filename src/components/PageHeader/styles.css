@@ -19,6 +19,8 @@
   color: var(--text);
   font: bold 1.1rem "Rajdhani";
   text-decoration: none;
+
+  cursor: pointer;
 }
 
 .page-header .page-back-container svg{
