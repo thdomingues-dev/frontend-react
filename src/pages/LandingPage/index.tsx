@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 
 import PageHeader from '../../components/PageHeader';
@@ -18,26 +19,26 @@ const LandingPage = () => {
           <h2>Recursos disponíveis</h2>
 
           <div className="resource-group">
-            <a href="/">
+            <Link to="/">
               <span>
                 <FiChevronRight />
               </span>
               <p> Visualizar usuários</p>
-            </a>
+            </Link>
 
-            <a href="/">
+            <Link to="/">
               <span>
                 <FiChevronRight />
               </span>
               <p> Consultar cartões</p>
-            </a>
+            </Link>
 
-            <a href="/">
+            <Link to="/">
               <span>
                 <FiChevronRight />
               </span>
               <p> Obter auditoria</p>
-            </a>
+            </Link>
           </div>
         </div>
       </main>
