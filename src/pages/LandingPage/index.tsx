@@ -1,3 +1,5 @@
+import { FiChevronRight } from 'react-icons/fi';
+
 import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
@@ -16,11 +18,26 @@ const LandingPage = () => {
           <h2>Recursos disponíveis</h2>
 
           <div className="resource-group">
-            <p>{">"} Visualizar usuários</p>
+            <a href="/">
+              <span>
+                <FiChevronRight />
+              </span>
+              <p> Visualizar usuários</p>
+            </a>
 
-            <p>{">"} Consultar cartões</p>
+            <a href="/">
+              <span>
+                <FiChevronRight />
+              </span>
+              <p> Consultar cartões</p>
+            </a>
 
-            <p>{">"} Obter auditoria</p>
+            <a href="/">
+              <span>
+                <FiChevronRight />
+              </span>
+              <p> Obter auditoria</p>
+            </a>
           </div>
         </div>
       </main>
