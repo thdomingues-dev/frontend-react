@@ -4,7 +4,6 @@ import LandingPage from './pages/LandingPage';
 import Users from './pages/Users';
 import Cards from './pages/Cards';
 
-
 const Routes = () => {
   return (
     <BrowserRouter>

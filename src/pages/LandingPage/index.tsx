@@ -26,7 +26,7 @@ const LandingPage = () => {
               <p> Visualizar usuários</p>
             </Link>
 
-            <Link to="/">
+            <Link to="/cards">
               <span>
                 <FiChevronRight />
               </span>
