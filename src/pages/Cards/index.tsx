@@ -7,6 +7,16 @@ import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
 
+interface Card {
+  id: number;
+  status: string;
+  metadatas: {
+    name: string;
+    digits: number;
+    limit: number;
+  };
+}
+
 const Cards = () => {
   const [cards, setCards] = useState([]);
 
@@ -30,37 +40,39 @@ const Cards = () => {
         <aside>Buscar cartão</aside>
         <main>
           <ul>
-            <li>
-              <header>
-                GREENROCK
+            {cards.map((card: Card) => (
+              <li key={card.id}>
+                <header>
+                  GREENROCK
               </header>
 
-              <FiCreditCard style={{ color: "#FFF" }} />
+                <FiCreditCard style={{ color: "#FFF" }} />
 
-              <span>
-                <div>
-                  <div className="cards-content-row">
-                    <p>Thales dos Santos Domingues</p>
+                <span>
+                  <div>
+                    <div className="cards-content-row">
+                      <p>{card.metadatas.name}</p>
+                    </div>
+
+                    <div className="cards-content-row">
+                      <p>{card.metadatas.digits}</p>
+                    </div>
                   </div>
 
-                  <div className="cards-content-row">
-                    <p>0247 5471 1223 8</p>
-                  </div>
-                </div>
+                  <div>
+                    <div className="cards-content-row">
+                      <strong>Status</strong>
+                      <p>{card.status}</p>
+                    </div>
 
-                <div>
-                  <div className="cards-content-row">
-                    <strong>Status</strong>
-                    <p>Solicitado</p>
+                    <div className="cards-content-row">
+                      <strong>Limite</strong>
+                      <p>R$ {card.metadatas.limit}</p>
+                    </div>
                   </div>
-
-                  <div className="cards-content-row">
-                    <strong>Limite</strong>
-                    <p>R$ 15.000,00</p>
-                  </div>
-                </div>
-              </span>
-            </li>
+                </span>
+              </li>
+            ))}
           </ul>
         </main>
       </div>
