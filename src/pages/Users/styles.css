@@ -20,8 +20,17 @@
   align-items: flex-start;
 }
 
+.users-container .users-content aside {
+  width: 20rem;
+  background: var(--white);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+}
+
 .users-container .users-content main {
   flex: 1;
+  margin-left: 1.5rem;
 }
 
 .users-container .users-content main ul {
@@ -32,6 +41,7 @@
 }
 
 .users-container .users-content main ul li {
+  width: 20rem;
   background: var(--white);
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;
