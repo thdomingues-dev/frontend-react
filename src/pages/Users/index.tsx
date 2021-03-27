@@ -1,10 +1,21 @@
+import { useState } from 'react';
 import { FiUser } from 'react-icons/fi';
 
 import PageHeader from '../../components/PageHeader';
 
+import api from '../../services/api';
+
 import './styles.css';
 
 const Users = () => {
+  const [users, setUsers] = useState([]);
+
+  async function loadUsers() {
+    const response = await api.get('/users');
+
+    setUsers(response.data);
+  }
+
   return (
     <div className="users-container">
       <PageHeader />
