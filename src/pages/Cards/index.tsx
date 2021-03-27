@@ -1,5 +1,7 @@
 import PageHeader from '../../components/PageHeader';
 
+import { FiCreditCard } from 'react-icons/fi';
+
 import './styles.css';
 
 const Cards = () => {
@@ -14,15 +16,99 @@ const Cards = () => {
         <main>
           <ul>
             <li>
-              Card1Card1Card1
+              <header>
+                GREENROCK
+              </header>
+
+              <FiCreditCard style={{ color: "#FFF" }} />
+
+              <span>
+                <div>
+                  <div className="cards-content-row">
+                    <p>Thales dos Santos Domingues</p>
+                  </div>
+
+                  <div className="cards-content-row">
+                    <p>0247 5471 1223 8</p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="cards-content-row">
+                    <strong>Status</strong>
+                    <p>Solicitado</p>
+                  </div>
+
+                  <div className="cards-content-row">
+                    <strong>Limite</strong>
+                    <p>R$ 15.000,00</p>
+                  </div>
+                </div>
+              </span>
             </li>
 
             <li>
-              Card2Card2Card2
+              <header>
+                GREENROCK
+              </header>
+
+              <FiCreditCard style={{ color: "#FFF" }} />
+
+              <span>
+                <div>
+                  <div className="cards-content-row">
+                    <p>Thales dos Santos Domingues</p>
+                  </div>
+
+                  <div className="cards-content-row">
+                    <p>0247 5471 1223 8</p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="cards-content-row">
+                    <strong>Status</strong>
+                    <p>Solicitado</p>
+                  </div>
+
+                  <div className="cards-content-row">
+                    <strong>Limite</strong>
+                    <p>R$ 15.000,00</p>
+                  </div>
+                </div>
+              </span>
             </li>
 
             <li>
-              Card3Card3Card3
+              <header>
+                GREENROCK
+              </header>
+
+              <FiCreditCard style={{ color: "#FFF" }} />
+
+              <span>
+                <div>
+                  <div className="cards-content-row">
+                    <p>Thales dos Santos Domingues</p>
+                  </div>
+
+                  <div className="cards-content-row">
+                    <p>0247 5471 1223 8</p>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="cards-content-row">
+                    <strong>Status</strong>
+                    <p>Solicitado</p>
+                  </div>
+
+                  <div className="cards-content-row">
+                    <strong>Limite</strong>
+                    <p>R$ 15.000,00</p>
+                  </div>
+                </div>
+              </span>
             </li>
           </ul>
         </main>

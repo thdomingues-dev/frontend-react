@@ -40,10 +40,69 @@
 }
 
 .cards-container .cards-content main ul li {
-  width: 40rem;
-  background: var(--white);
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
+  width: 34rem;
+  padding: 1.6rem;
+
+  background: rgba(0, 115, 77, 0.7);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
   border-radius: 0.25rem;
-  padding: 1.25rem;
+  
   list-style: none;
+
+  position: relative;
 }
+
+.cards-container .cards-content main ul li header {
+  position: absolute;
+  right: 1.6rem;
+  top: 1.0rem;
+
+  font-family: "Rajdhani";
+  font-size: 1.2rem;
+  color: var(--white);
+}
+.cards-container .cards-content main ul li svg {
+  position: absolute;
+
+  right: 1.6rem;
+  top: 3.0rem;
+
+  height: 2rem;
+  width: 2rem;
+}
+  
+
+.cards-container .cards-content main ul li span {
+  display: flex;
+  flex-direction: row;
+
+
+  margin-top: 5rem;
+  color: var(--white);
+}
+
+.cards-container .cards-content main ul li span .cards-content-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-container .cards-content main ul li span .cards-content-row p:first-child{
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.cards-container .cards-content main ul li span strong{
+  margin-top: 0.5rem;
+  font-family: "Rajdhani";
+  font-size: 0.8rem;
+  margin-left: 3rem;
+}
+
+.cards-container .cards-content main ul li span p{
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  margin-left: 3rem;
+}
+
+
+
