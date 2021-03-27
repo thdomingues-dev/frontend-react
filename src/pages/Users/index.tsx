@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiUser } from 'react-icons/fi';
 
 import PageHeader from '../../components/PageHeader';
@@ -6,6 +6,15 @@ import PageHeader from '../../components/PageHeader';
 import api from '../../services/api';
 
 import './styles.css';
+
+interface User {
+  name: string;
+  document: number;
+  email: string;
+  BirthDate: string;
+  salaryBase: number;
+}
+
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -15,6 +24,10 @@ const Users = () => {
 
     setUsers(response.data);
   }
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <div className="users-container">
@@ -29,62 +42,28 @@ const Users = () => {
         </aside>
         <main>
           <ul>
-            <li>
-              <header>
-                <FiUser />
-                <strong>Thales dos Santos Domingues</strong>
-              </header>
+            {
+              users.map((user: User) => (
+                <li key={user.document}>
+                  <header>
+                    <FiUser />
+                    <strong>{user.name}</strong>
+                  </header>
 
-              <strong>E-mail</strong>
-              <p>ts.tkd2@gmail.com</p>
+                  <strong>E-mail</strong>
+                  <p>{user.email}</p>
 
-              <strong>CPF/CNPJ</strong>
-              <p>{"***.049.457.***-**"}</p>
+                  <strong>CPF/CNPJ</strong>
+                  <p>{user.document}</p>
 
-              <strong>Aniversário</strong>
-              <p>27/11/1995</p>
+                  <strong>Aniversário</strong>
+                  <p>{user.BirthDate}</p>
 
-              <strong>Salário</strong>
-              <p>R$ 12.000,00</p>
-            </li>
-
-            <li>
-              <header>
-                <FiUser />
-                <strong>Thales dos Santos Domingues</strong>
-              </header>
-
-              <strong>E-mail</strong>
-              <p>ts.tkd2@gmail.com</p>
-
-              <strong>CPF/CNPJ</strong>
-              <p>{"***.049.457.***-**"}</p>
-
-              <strong>Salário</strong>
-              <p>R$ 12.000,00</p>
-
-              <strong>Aniversário</strong>
-              <p>27/11/1995</p>
-            </li>
-
-            <li>
-              <header>
-                <FiUser />
-                <strong>Thales dos Santos Domingues</strong>
-              </header>
-
-              <strong>E-mail</strong>
-              <p>ts.tkd2@gmail.com</p>
-
-              <strong>CPF/CNPJ</strong>
-              <p>{"***.049.457.***-**"}</p>
-
-              <strong>Salário</strong>
-              <p>R$ 12.000,00</p>
-
-              <strong>Aniversário</strong>
-              <p>27/11/1995</p>
-            </li>
+                  <strong>Salário</strong>
+                  <p>R$ {user.salaryBase}</p>
+                </li>
+              ))
+            }
           </ul>
         </main>
       </div>
