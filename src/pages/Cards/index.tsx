@@ -1,10 +1,25 @@
-import PageHeader from '../../components/PageHeader';
-
+import { useEffect, useState } from 'react';
 import { FiCreditCard } from 'react-icons/fi';
+
+import api from '../../services/api';
+
+import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
 
 const Cards = () => {
+  const [cards, setCards] = useState([]);
+
+  async function loadCards() {
+    const response = await api.get('/cards');
+
+    setCards(response.data);
+  }
+
+  useEffect(() => {
+    loadCards();
+  }, []);
+
   return (
     <div className="cards-container">
       <PageHeader />
