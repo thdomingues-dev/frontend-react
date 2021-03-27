@@ -1,0 +1,11 @@
+.cards-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20rem;
+}
+
+.cards-container h1 {
+  color: var(--title);
+  font: bold 2rem "Rajdhani";
+}
