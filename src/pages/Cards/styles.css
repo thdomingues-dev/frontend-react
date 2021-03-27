@@ -9,3 +9,41 @@
   color: var(--title);
   font: bold 2rem "Rajdhani";
 }
+
+.cards-container .cards-content {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.cards-container .cards-content aside {
+  width: 20rem;
+  background: var(--white);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+}
+
+.cards-container .cards-content main {
+  flex: 1;
+  margin-left: 1.5rem;
+}
+
+.cards-container .cards-content main ul {
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  gap: 1.5rem;
+}
+
+.cards-container .cards-content main ul li {
+  width: 40rem;
+  background: var(--white);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+  list-style: none;
+}
