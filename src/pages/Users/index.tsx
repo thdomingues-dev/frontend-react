@@ -1,3 +1,5 @@
+import { FiUser } from 'react-icons/fi';
+
 import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
@@ -16,11 +18,62 @@ const Users = () => {
         </aside>
         <main>
           <ul>
-            <li>Dev1</li>
+            <li>
+              <header>
+                <FiUser />
+                <strong>Thales dos Santos Domingues</strong>
+              </header>
 
-            <li>Dev2</li>
+              <strong>E-mail</strong>
+              <p>ts.tkd2@gmail.com</p>
 
-            <li>Dev3</li>
+              <strong>CPF/CNPJ</strong>
+              <p>{"***.049.457.***-**"}</p>
+
+              <strong>Aniversário</strong>
+              <p>27/11/1995</p>
+
+              <strong>Salário</strong>
+              <p>R$ 12.000,00</p>
+            </li>
+
+            <li>
+              <header>
+                <FiUser />
+                <strong>Thales dos Santos Domingues</strong>
+              </header>
+
+              <strong>E-mail</strong>
+              <p>ts.tkd2@gmail.com</p>
+
+              <strong>CPF/CNPJ</strong>
+              <p>{"***.049.457.***-**"}</p>
+
+              <strong>Salário</strong>
+              <p>R$ 12.000,00</p>
+
+              <strong>Aniversário</strong>
+              <p>27/11/1995</p>
+            </li>
+
+            <li>
+              <header>
+                <FiUser />
+                <strong>Thales dos Santos Domingues</strong>
+              </header>
+
+              <strong>E-mail</strong>
+              <p>ts.tkd2@gmail.com</p>
+
+              <strong>CPF/CNPJ</strong>
+              <p>{"***.049.457.***-**"}</p>
+
+              <strong>Salário</strong>
+              <p>R$ 12.000,00</p>
+
+              <strong>Aniversário</strong>
+              <p>27/11/1995</p>
+            </li>
           </ul>
         </main>
       </div>

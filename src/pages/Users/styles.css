@@ -5,6 +5,11 @@
   padding: 0 20rem;
 }
 
+.users-container h1 {
+  color: var(--title);
+  font: bold 2rem "Rajdhani";
+}
+
 .users-container .users-content {
   max-width: 75rem;
   margin: 0 auto;
@@ -24,4 +29,44 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   list-style: none;
+}
+
+.users-container .users-content main ul li {
+  background: var(--white);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  padding: 1.25rem;
+}
+
+.users-container .users-content main ul li header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  color: rgba(0, 115, 77, 0.8);
+
+  border-bottom: 1.5px solid var(--background);
+}
+
+.users-container .users-content main ul li header svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.users-container .users-content main ul li header strong {
+  display: block;
+  margin-left: 0.8rem;
+}
+
+.users-container .users-content main ul li > strong {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.users-container .users-content main ul li p {
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
 }
