@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom';
-import { FiChevronRight } from 'react-icons/fi';
-
 import PageHeader from '../../components/PageHeader';
+import ResourceButton from '../../components/ResourceButton';
 
 import './styles.css';
 
@@ -19,26 +17,20 @@ const LandingPage = () => {
           <h2>Recursos disponíveis</h2>
 
           <div className="resource-group">
-            <Link to="/users">
-              <span>
-                <FiChevronRight />
-              </span>
-              <p> Visualizar usuários</p>
-            </Link>
+            <ResourceButton
+              path="/users"
+              description=" Visualizar usuários"
+            />
 
-            <Link to="/cards">
-              <span>
-                <FiChevronRight />
-              </span>
-              <p> Consultar cartões</p>
-            </Link>
+            <ResourceButton
+              path="/cards"
+              description=" Consultar cartões"
+            />
 
-            <Link to="/audits">
-              <span>
-                <FiChevronRight />
-              </span>
-              <p> Obter auditoria</p>
-            </Link>
+            <ResourceButton
+              path="/audits"
+              description=" Obter auditoria"
+            />
           </div>
         </div>
       </main>

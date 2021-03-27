@@ -29,47 +29,4 @@
   color: #00734d;
   font-size: 2rem;
  }
-
- .page-container main .group-container .resource-group a {
-  width: 100%;
-  max-width: 20rem;
-  height: 4.5rem;
-  background: var(--background);
-  border-radius: 0.25rem;
-  text-decoration: none;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
-
-  margin-top: 2rem;
- }
-
- .page-container main .group-container .resource-group a span {
-  display: block;
-  background: rgba(0, 115, 77, 0.8);
-  width: 4.5rem;
-  height: 4.5rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: box-shadow 0.2s;
- }
-
- .page-container main .group-container .resource-group a span svg {
-   color: var(--white);
-   width: 1.25rem;
-   height: 1.25rem;
- }
-
- .page-container main .group-container .resource-group a p{
-  flex: 1;
-  text-align: center;
-  margin-right: 1rem;
- }
-
- .page-container main .group-container .resource-group a:hover {
-   box-shadow: 0 0 5px rgba(0, 115, 77, 0.8);
-}
+ 
