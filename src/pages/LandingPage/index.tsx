@@ -1,4 +1,5 @@
 import PageHeader from '../../components/PageHeader';
+import PageTitle from '../../components/PageTitle';
 import ResourceButton from '../../components/ResourceButton';
 
 import './styles.css';
@@ -8,9 +9,10 @@ const LandingPage = () => {
     <div className="page-container">
       <PageHeader />
 
-      <h1>Bem-vindo, Thales!</h1>
-
-      <p>Escolha uma das opções abaixo para continuar.</p>
+      <PageTitle
+        title="Bem-vindo, Thales!"
+        description="Escolha uma das opções abaixo para continuar."
+      />
 
       <main>
         <div className="group-container">

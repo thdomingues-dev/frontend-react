@@ -4,11 +4,6 @@
   padding: 0 20rem;
 }
 
-.page-container h1 {
-  color: var(--title);
-  font: bold 2rem "Rajdhani";
- }
-
 .page-container main {
   display: flex;
   flex-direction: column;

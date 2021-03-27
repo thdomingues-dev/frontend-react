@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { FiUser } from 'react-icons/fi';
 
 import PageHeader from '../../components/PageHeader';
+import PageTitle from '../../components/PageTitle';
 
 import api from '../../services/api';
 
@@ -32,9 +33,11 @@ const Users = () => {
   return (
     <div className="users-container">
       <PageHeader />
-      <h1>Usuários cadastrados</h1>
 
-      <p>Aqui é possível encontrar informações como: nome, documento, e-mail e muito mais.</p>
+      <PageTitle
+        title="Usuários cadastrados"
+        description="Aqui é possível encontrar informações como: nome, documento, e-mail e muito mais."
+      />
 
       <div className="users-content">
         <aside>

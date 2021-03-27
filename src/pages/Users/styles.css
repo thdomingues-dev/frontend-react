@@ -5,11 +5,6 @@
   padding: 0 20rem;
 }
 
-.users-container h1 {
-  color: var(--title);
-  font: bold 2rem "Rajdhani";
-}
-
 .users-container .users-content {
   max-width: 75rem;
   margin: 0 auto;

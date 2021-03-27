@@ -5,11 +5,6 @@
   padding: 0 20rem;
 }
 
-.cards-container h1 {
-  color: var(--title);
-  font: bold 2rem "Rajdhani";
-}
-
 .cards-container .cards-content {
   max-width: 75rem;
   margin: 0 auto;

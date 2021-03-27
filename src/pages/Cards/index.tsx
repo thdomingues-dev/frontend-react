@@ -6,6 +6,7 @@ import api from '../../services/api';
 import PageHeader from '../../components/PageHeader';
 
 import './styles.css';
+import PageTitle from '../../components/PageTitle';
 
 interface Card {
   id: number;
@@ -33,8 +34,11 @@ const Cards = () => {
   return (
     <div className="cards-container">
       <PageHeader />
-      <h1>Consulta de cartões</h1>
-      <p>Verifique status, valores e muito mais.</p>
+
+      <PageTitle
+        title="Consulta de cartões"
+        description="Verifique status, valores e muito mais."
+      />
 
       <div className="cards-content">
         <aside>Buscar cartão</aside>
