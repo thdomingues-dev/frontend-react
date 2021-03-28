@@ -58,6 +58,9 @@ const Audits = () => {
 
       case 'requested':
         return 'Solicitado';
+
+      default:
+        return status;
     }
   }
 
