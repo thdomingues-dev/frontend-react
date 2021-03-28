@@ -1,0 +1,53 @@
+.audits-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20rem;
+}
+
+.audits-container main {
+  width: 100%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.audits-container main ul {
+  flex: 1;
+  background: var(--white);
+  border-radius: 0.25rem;
+}
+
+.audits-container main ul li {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+  gap: 1rem;
+  
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.audits-container main ul li:first-child {
+  background: rgba(0, 115, 77, 0.8);
+  color: var(--white);
+}
+
+.audits-container main ul li strong {
+  font-family: "Rajdhani";
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.audits-container main ul li p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+
+
