@@ -28,17 +28,47 @@ const Cards = () => {
   }
 
   async function approvedCard(card: Card) {
+    const oldCard = card;
+
     await api.put(`/cards/${card.id}`, {
       status: "approved",
       metadatas: card.metadatas,
     });
+
+    await api.post('/audits/', {
+      createdAt: "2021-02-28T23:00:02.790Z",
+      before: {
+        status: oldCard.status
+      },
+      after: {
+        status: "approved"
+      },
+      requestedBy: 1963,
+    });
+
+    loadCards();
   }
 
   async function rejectedCard(card: Card) {
+    const oldCard = card;
+
     await api.put(`/cards/${card.id}`, {
       status: "rejected",
       metadatas: card.metadatas,
     });
+
+    await api.post('/audits/', {
+      createdAt: "2021-02-28T23:00:02.790Z",
+      before: {
+        status: oldCard.status
+      },
+      after: {
+        status: "rejected"
+      },
+      requestedBy: 1963,
+    });
+
+    loadCards();
   }
 
   useEffect(() => {
