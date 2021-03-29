@@ -27,6 +27,20 @@ const Cards = () => {
     setCards(response.data);
   }
 
+  async function approvedCard(card: Card) {
+    await api.put(`/cards/${card.id}`, {
+      status: "approved",
+      metadatas: card.metadatas,
+    });
+  }
+
+  async function rejectedCard(card: Card) {
+    await api.put(`/cards/${card.id}`, {
+      status: "rejected",
+      metadatas: card.metadatas,
+    });
+  }
+
   useEffect(() => {
     loadCards();
   }, []);
@@ -45,37 +59,54 @@ const Cards = () => {
         <main>
           <ul>
             {cards.map((card: Card) => (
-              <li key={card.id}>
-                <header>
-                  GREENROCK
-              </header>
+              <div className="cards-content-group">
+                <li key={card.id}>
+                  <header>
+                    GREENROCK
+                  </header>
 
-                <FiCreditCard style={{ color: "#FFF" }} />
+                  <FiCreditCard style={{ color: "#FFF" }} />
 
-                <span>
-                  <div>
-                    <div className="cards-content-row">
-                      <p>{card.metadatas.name}</p>
+                  <span>
+                    <div>
+                      <div className="cards-content-row">
+                        <p>{card.metadatas.name}</p>
+                      </div>
+
+                      <div className="cards-content-row">
+                        <p>{card.metadatas.digits}</p>
+                      </div>
                     </div>
 
-                    <div className="cards-content-row">
-                      <p>{card.metadatas.digits}</p>
-                    </div>
-                  </div>
+                    <div>
+                      <div className="cards-content-row">
+                        <strong>Status</strong>
+                        <p>{card.status}</p>
+                      </div>
 
-                  <div>
-                    <div className="cards-content-row">
-                      <strong>Status</strong>
-                      <p>{card.status}</p>
+                      <div className="cards-content-row">
+                        <strong>Limite</strong>
+                        <p>R$ {card.metadatas.limit}</p>
+                      </div>
                     </div>
+                  </span>
+                </li>
 
-                    <div className="cards-content-row">
-                      <strong>Limite</strong>
-                      <p>R$ {card.metadatas.limit}</p>
-                    </div>
-                  </div>
-                </span>
-              </li>
+                <div className="cards-group-box">
+                  <button
+                    type="button"
+                    onClick={() => { approvedCard(card) }}
+                  >
+                    Aprovar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { rejectedCard(card) }}
+                  >
+                    Rejeitar
+                  </button>
+                </div>
+              </div>
             ))}
           </ul>
         </main>

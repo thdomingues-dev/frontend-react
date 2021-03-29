@@ -34,7 +34,12 @@
   gap: 1.5rem;
 }
 
-.cards-container .cards-content main ul li {
+.cards-container .cards-content main ul .cards-content-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.cards-container .cards-content main ul .cards-content-group li {
   width: 34rem;
   padding: 1.6rem;
 
@@ -47,7 +52,7 @@
   position: relative;
 }
 
-.cards-container .cards-content main ul li header {
+.cards-container .cards-content main ul .cards-content-group li header {
   position: absolute;
   right: 1.6rem;
   top: 1.0rem;
@@ -56,7 +61,7 @@
   font-size: 1.2rem;
   color: var(--white);
 }
-.cards-container .cards-content main ul li svg {
+.cards-container .cards-content main ul .cards-content-group li svg {
   position: absolute;
 
   right: 1.6rem;
@@ -65,9 +70,8 @@
   height: 2rem;
   width: 2rem;
 }
-  
 
-.cards-container .cards-content main ul li span {
+.cards-container .cards-content main ul .cards-content-group li span {
   display: flex;
   flex-direction: row;
 
@@ -76,28 +80,53 @@
   color: var(--white);
 }
 
-.cards-container .cards-content main ul li span .cards-content-row {
+.cards-container .cards-content main ul .cards-content-group li span .cards-content-row {
   display: flex;
   flex-direction: column;
 }
 
-.cards-container .cards-content main ul li span .cards-content-row p:first-child{
+.cards-container .cards-content main ul .cards-content-group li span .cards-content-row p:first-child {
   font-size: 1rem;
   margin: 0.5rem 0;
 }
 
-.cards-container .cards-content main ul li span strong{
+.cards-container .cards-content main ul .cards-content-group li span strong {
   margin-top: 0.5rem;
   font-family: "Rajdhani";
   font-size: 0.8rem;
   margin-left: 3rem;
 }
 
-.cards-container .cards-content main ul li span p{
+.cards-container .cards-content main ul .cards-content-group li span p {
   margin-top: 0.2rem;
   font-size: 0.8rem;
   margin-left: 3rem;
 }
 
+.cards-container .cards-content main ul .cards-group-box {
+  display: flex;
+  flex-direction: column;
+  width: 6rem;
+  background: "#000" !important;
+}
 
+.cards-container .cards-content main ul .cards-group-box button {
+  padding: 0.25rem;
+  margin-bottom: 0.25rem;
 
+  font-size: 0.8rem;
+
+  border: 0.05rem solid rgba(0, 115, 77, 0.7);
+  border-left: none;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.cards-container .cards-content main ul .cards-group-box button:nth-child(2){
+  border: 0.05rem solid rgba(115, 0, 0, 0.7);
+  border-left: none;
+}
