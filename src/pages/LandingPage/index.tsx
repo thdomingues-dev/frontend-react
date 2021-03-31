@@ -30,6 +30,11 @@ const LandingPage = () => {
             />
 
             <ResourceButton
+              path="/newcard"
+              description=" Solicitar cartão"
+            />
+
+            <ResourceButton
               path="/audits"
               description=" Obter auditoria"
             />

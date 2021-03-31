@@ -99,6 +99,7 @@
   margin-right: 1rem;
 
   border: 0;
+  outline: 0;
   background: var(--background);
   color: rgb(0, 115, 77);
  }

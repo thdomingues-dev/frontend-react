@@ -1,0 +1,68 @@
+.newcard-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20rem;
+}
+
+.newcard-container main {
+  margin-top: 4rem;
+  padding: 0 18rem;
+}
+
+.newcard-container main form {
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+    padding: 2rem 4rem; 
+  
+    background: var(--white);
+}
+
+.newcard-container main form label {
+  margin-top: 1.25rem;
+  font-weight: bold;
+  color: rgba(0, 115, 77, 0.8);
+}
+
+.newcard-container main form input {
+  margin-top: 0.5rem;
+  line-height: 3rem;
+
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
+  background: var(--background);
+  outline: none;
+
+  transition: box-shadow 0.2s;
+}
+
+.newcard-container main form .newcard-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newcard-container main form button {
+  width: 14rem;
+  height: 3.75rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+
+  border: 0;
+  border-radius: 0.25rem;
+
+  outline: 0;
+  background: rgba(0, 115, 77, 0.8);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  color: var(--white);
+
+  transition: box-shadow 0.2s;
+}
+
+.newcard-container main form input:hover,
+.newcard-container main form button:hover {
+  box-shadow: 0 0 0.3rem rgba(0, 115, 77, 0.8);
+}
