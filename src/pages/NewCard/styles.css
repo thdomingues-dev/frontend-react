@@ -66,3 +66,9 @@
 .newcard-container main form button:hover {
   box-shadow: 0 0 0.3rem rgba(0, 115, 77, 0.8);
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+}
