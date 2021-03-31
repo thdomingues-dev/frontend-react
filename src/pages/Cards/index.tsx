@@ -71,6 +71,25 @@ const Cards = () => {
     loadCards();
   }
 
+  async function deletedCard(card: Card) {
+    const oldCard = card;
+
+    await api.delete(`/cards/${card.id}`);
+
+    await api.post('/audits/', {
+      createdAt: "2021-02-28T23:00:02.790Z",
+      before: {
+        status: oldCard.status
+      },
+      after: {
+        status: "deleted"
+      },
+      requestedBy: 1963,
+    });
+
+    loadCards();
+  }
+
   useEffect(() => {
     loadCards();
   }, []);
@@ -134,6 +153,13 @@ const Cards = () => {
                     onClick={() => { rejectedCard(card) }}
                   >
                     Rejeitar
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => { deletedCard(card) }}
+                  >
+                    Excluir
                   </button>
                 </div>
               </div>
