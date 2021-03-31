@@ -61,7 +61,7 @@
   font-size: 1.2rem;
   color: var(--white);
 }
-.cards-container .cards-content main ul .cards-content-group li svg {
+.cards-container .cards-content main ul .cards-content-group li header + svg {
   position: absolute;
 
   right: 1.6rem;
@@ -85,9 +85,37 @@
   flex-direction: column;
 }
 
+.cards-container .cards-content main ul .cards-content-group li span .cards-content-row .cards-content-name  {
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 1rem;
+}
+
+.cards-container .cards-content main ul .cards-content-group li span .cards-content-row .cards-content-name svg {
+  height: 1.5rem;
+  width: 1.5rem;
+
+  background: var(--white);
+  color: rgba(0, 115, 77, 0.7);
+
+  border-radius: 0.25rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
 .cards-container .cards-content main ul .cards-content-group li span .cards-content-row p:first-child {
   font-size: 1rem;
   margin: 0.5rem 0;
+}
+
+.cards-container .cards-content main ul .cards-content-group li span .cards-content-row input {
+  outline: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  
+  transition: 0.2s;
 }
 
 .cards-container .cards-content main ul .cards-content-group li span strong {
@@ -107,7 +135,6 @@
   display: flex;
   flex-direction: column;
   width: 6rem;
-  background: "#000" !important;
 }
 
 .cards-container .cards-content main ul .cards-group-box button {
@@ -130,3 +157,13 @@
   border: 0.05rem solid rgba(115, 0, 0, 0.7);
   border-left: none;
 }
+
+::-webkit-input-placeholder  {
+  color: var(--text);
+  font-size: 0.8rem;
+ }
+
+ .cards-container .cards-content main ul .cards-content-group li span .cards-content-row input:hover,
+ .cards-container .cards-content main ul .cards-content-group li span .cards-content-row svg:hover  {
+  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.5);
+ }

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { FiCreditCard } from 'react-icons/fi';
+import { FiCreditCard, FiCheckSquare } from 'react-icons/fi';
 
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
+import PageTitle from '../../components/PageTitle';
 
 import './styles.css';
-import PageTitle from '../../components/PageTitle';
 
 interface Card {
   id: number;
@@ -20,6 +20,8 @@ interface Card {
 
 const Cards = () => {
   const [cards, setCards] = useState([]);
+  const [userName, setUserName] = useState('');
+  const [isUpdatingUserName, setIsUpdatingUserName] = useState(Number);
 
   async function loadCards() {
     const response = await api.get('/cards');
@@ -90,6 +92,35 @@ const Cards = () => {
     loadCards();
   }
 
+  async function updatedUserName(card: Card) {
+    await api.put(`/cards/${card.id}`, {
+      status: card.status,
+      metadatas: {
+        name: userName,
+        digits: card.metadatas.digits,
+        limit: card.metadatas.limit,
+      }
+    });
+
+    await api.post('/audits/', {
+      createdAt: "2021-02-28T23:00:02.790Z",
+      before: {
+        status: String(card.metadatas.name),
+      },
+      after: {
+        status: userName,
+      },
+      requestedBy: 7247,
+    });
+
+    loadCards();
+    setIsUpdatingUserName(0);
+  }
+
+  function handleUserCard(card: Card) {
+    setIsUpdatingUserName(card.id);
+  }
+
   useEffect(() => {
     loadCards();
   }, []);
@@ -122,6 +153,20 @@ const Cards = () => {
                         <p>{card.metadatas.name}</p>
                       </div>
 
+                      {(isUpdatingUserName === card.id) &&
+                        <div className="cards-content-row">
+                          <div className="cards-content-name">
+                            <input
+                              type="text"
+                              placeholder="Nome do usuário"
+                              onChange={(e) => { setUserName(e.target.value) }}
+                              autoComplete="off"
+                            />
+                            <FiCheckSquare onClick={() => { updatedUserName(card) }} />
+                          </div>
+                        </div>
+                      }
+
                       <div className="cards-content-row">
                         <p>{card.metadatas.digits}</p>
                       </div>
@@ -148,11 +193,19 @@ const Cards = () => {
                   >
                     Aprovar
                   </button>
+
                   <button
                     type="button"
                     onClick={() => { rejectedCard(card) }}
                   >
                     Rejeitar
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => { handleUserCard(card) }}
+                  >
+                    Atualizar
                   </button>
 
                   <button
@@ -167,7 +220,7 @@ const Cards = () => {
           </ul>
         </main>
       </div>
-    </div>
+    </div >
   );
 }
 
