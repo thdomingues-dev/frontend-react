@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import AuthContext from '../../contexts/auth';
 import { FiCreditCard, FiCheckSquare } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -19,6 +20,8 @@ interface Card {
 }
 
 const Cards = () => {
+  const { analyst } = useContext(AuthContext);
+
   const [cards, setCards] = useState([]);
   const [userName, setUserName] = useState('');
   const [isUpdatingUserName, setIsUpdatingUserName] = useState(Number);
@@ -178,10 +181,12 @@ const Cards = () => {
                         <p>{card.status}</p>
                       </div>
 
-                      <div className="cards-content-row">
-                        <strong>Limite</strong>
-                        <p>R$ {card.metadatas.limit}</p>
-                      </div>
+                      {analyst.roles.includes("n2") &&
+                        <div className="cards-content-row">
+                          <strong>Limite</strong>
+                          <p>R$ {card.metadatas.limit}</p>
+                        </div>
+                      }
                     </div>
                   </span>
                 </li>
@@ -208,12 +213,13 @@ const Cards = () => {
                     Atualizar
                   </button>
 
-                  <button
-                    type="button"
-                    onClick={() => { deletedCard(card) }}
-                  >
-                    Excluir
-                  </button>
+                  {analyst.roles.includes("n2") &&
+                    <button
+                      type="button"
+                      onClick={() => { deletedCard(card) }}
+                    >
+                      Excluir
+                  </button>}
                 </div>
               </div>
             ))}

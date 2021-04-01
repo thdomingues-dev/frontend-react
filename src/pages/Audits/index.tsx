@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import AuthContext from '../../contexts/auth';
 
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
@@ -26,6 +27,8 @@ interface Analyst {
 }
 
 const Audits = () => {
+  const { analyst } = useContext(AuthContext);
+
   const [audits, setAudits] = useState([]);
   const [analysts, setAnalysts] = useState<Analyst[]>([]);
 
@@ -71,34 +74,38 @@ const Audits = () => {
 
   return (
     <div className="audits-container">
-      <PageHeader />
-      <PageTitle
-        title="Auditoria de logs"
-        description="Analise as operações realizadas no sistema."
-      />
+      {analyst.roles.includes("n2") &&
+        <>
+          <PageHeader />
+          <PageTitle
+            title="Auditoria de logs"
+            description="Analise as operações realizadas no sistema."
+          />
 
-      <main>
-        <ul>
-          <li>
-            <strong>ID</strong>
-            <strong>Data/Hora</strong>
-            <strong>Antes</strong>
-            <strong>Depois</strong>
-            <strong>Analista</strong>
-          </li>
+          <main>
+            <ul>
+              <li>
+                <strong>ID</strong>
+                <strong>Data/Hora</strong>
+                <strong>Antes</strong>
+                <strong>Depois</strong>
+                <strong>Analista</strong>
+              </li>
 
-          {audits.map((audit: Audit) => (
-            <li key={audit.id}>
-              <p>{audit.id}</p>
-              <p>{audit.createdAt}</p>
-              <p>{translateToPortuguese(audit.before.status)}</p>
-              <p>{translateToPortuguese(audit.after.status)}</p>
-              <p>{findAnalyst(audit.requestedBy)}</p>
-            </li>
-          ))
-          }
-        </ul>
-      </main>
+              {audits.map((audit: Audit) => (
+                <li key={audit.id}>
+                  <p>{audit.id}</p>
+                  <p>{audit.createdAt}</p>
+                  <p>{translateToPortuguese(audit.before.status)}</p>
+                  <p>{translateToPortuguese(audit.after.status)}</p>
+                  <p>{findAnalyst(audit.requestedBy)}</p>
+                </li>
+              ))
+              }
+            </ul>
+          </main>
+        </>
+      }
     </div>
   );
 }

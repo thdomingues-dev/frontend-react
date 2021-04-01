@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import AuthContext from '../../contexts/auth';
+
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
 import ResourceButton from '../../components/ResourceButton';
@@ -5,6 +8,8 @@ import ResourceButton from '../../components/ResourceButton';
 import './styles.css';
 
 const LandingPage = () => {
+  const { analyst } = useContext(AuthContext);
+
   return (
     <div className="page-container">
       <PageHeader />
@@ -34,10 +39,12 @@ const LandingPage = () => {
               description=" Solicitar cartão"
             />
 
-            <ResourceButton
-              path="/audits"
-              description=" Obter auditoria"
-            />
+            {analyst.roles.includes("n2") &&
+              <ResourceButton
+                path="/audits"
+                description=" Obter auditoria"
+              />
+            }
           </div>
         </div>
       </main>

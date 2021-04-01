@@ -10,7 +10,7 @@ async function authService(email: string, password: string) {
         return analysts[i];
       }
     }
-    return ({ Status: "Error", Description: "Invalid login" });
+    return null;
   }
   catch (err) {
 

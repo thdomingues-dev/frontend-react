@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import AuthContext from '../../contexts/auth';
+
 import { FiUser } from 'react-icons/fi';
 
 import PageHeader from '../../components/PageHeader';
@@ -18,6 +20,7 @@ interface User {
 
 
 const Users = () => {
+  const { analyst } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
 
   async function loadUsers() {
@@ -62,8 +65,13 @@ const Users = () => {
                   <strong>Aniversário</strong>
                   <p>{user.BirthDate}</p>
 
-                  <strong>Salário</strong>
-                  <p>R$ {user.salaryBase}</p>
+                  { analyst.roles.includes("n2") && (
+                    <>
+                      <strong>Salário</strong>
+                      <p>R$ {user.salaryBase}</p>
+                    </>
+                  )
+                  }
                 </li>
               ))
             }
