@@ -1,25 +1,44 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import authService from '../services/auth';
 
 interface AuthContextData {
   logged: boolean;
-  user: object | null;
+  analyst: object | null;
   login: (arg0: string, arg1: string) => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<object | null>(null);
+  const [analyst, setAnalyst] = useState<object | null>(null);
+
+  useEffect(() => {
+    loadStoragedAnalyst();
+  }, []);
+
+  async function loadStoragedAnalyst() {
+    const storagedAnalyst = await localStorage.getItem('@RAuth:analyst');
+    if (storagedAnalyst) {
+      setAnalyst(JSON.parse(storagedAnalyst));
+    }
+  }
 
   async function login(email: string, password: string) {
-    const userResponse = await authService(email, password);
+    const analystResponse = await authService(email, password);
 
-    setUser(userResponse);
+    setAnalyst(analystResponse);
+
+    await localStorage.setItem('@RAuth:analyst', JSON.stringify(analystResponse));
+  }
+
+  function logout() {
+    localStorage.clear();
+    setAnalyst(null);
   }
 
   return (
-    <AuthContext.Provider value={{ logged: !!user, user, login }}>
+    <AuthContext.Provider value={{ logged: !!analyst, analyst, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

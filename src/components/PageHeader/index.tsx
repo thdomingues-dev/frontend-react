@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiLogOut } from 'react-icons/fi';
+
+import AuthProvider from '../../contexts/auth';
 
 import './styles.css';
 
 const PageHeader = () => {
   const history = useHistory();
+  const { logout } = useContext(AuthProvider);
 
   function handleNavigateBack() {
     history.goBack();
@@ -14,11 +18,18 @@ const PageHeader = () => {
     <header className="page-header">
       <strong>GREENROCK</strong>
 
-      <div className="page-back-container" onClick={handleNavigateBack}>
-        <FiArrowLeft />
-        Voltar
+      <div className="page-button-container">
+        <div className="page-back" onClick={handleNavigateBack}>
+          <FiArrowLeft />
+          Voltar
+          </div>
+        |
+          <div className="page-out" onClick={logout}>
+          Sair
+            <FiLogOut />
+        </div>
       </div>
-    </header>
+    </header >
   );
 }
 

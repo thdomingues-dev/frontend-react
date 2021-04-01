@@ -12,7 +12,15 @@
   color: var(--green-stone);
 }
 
-.page-header .page-back-container {
+.page-header .page-button-container {
+  display: flex;
+  align-items: center;
+
+  font: bold 1.1rem "Rajdhani";
+}
+
+.page-header .page-button-container  .page-back,
+.page-header .page-button-container  .page-out {
   display: flex;
   align-items: center;
 
@@ -21,8 +29,27 @@
   text-decoration: none;
 
   cursor: pointer;
+
+  transition: color 0.2s;
 }
 
-.page-header .page-back-container svg{
+.page-header .page-button-container  .page-back {
   margin-right: 0.5rem;
+}
+
+.page-header .page-button-container .page-out {
+  margin-left: 0.5rem;
+}
+
+.page-header .page-button-container .page-back svg{
+  margin-right: 0.5rem;
+}
+
+.page-header .page-button-container .page-out svg{
+  margin-left: 0.5rem;
+}
+
+.page-header .page-button-container .page-back:hover,
+.page-header .page-button-container  .page-out:hover {
+  color: var(--green-stone);
 }

@@ -7,7 +7,6 @@ async function authService(email: string, password: string) {
   try {
     for (let i = 0; i < analysts.length; i++) {
       if ((analysts[i].email === email) && (analysts[i].password === password)) {
-        console.log(analysts[i]);
         return analysts[i];
       }
     }
