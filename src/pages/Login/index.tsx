@@ -1,50 +1,23 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
-import { useHistory } from 'react-router';
+
+import { useContext } from 'react';
+import AuthContext from '../../contexts/auth';
 
 import PageTitle from '../../components/PageTitle';
 
-import api from '../../services/api';
-
 import './styles.css';
 
-interface Analyst {
-  email: string;
-  password: string;
-}
-
 const Login = () => {
-  const [analysts, setAnalysts] = useState<Analyst[]>([]);
+  const { login } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const history = useHistory();
-
   function handleLogin(e: FormEvent) {
     e.preventDefault();
-
-    try {
-      for (let i = 0; i < analysts.length; i++) {
-        if ((analysts[i].email === email) && (analysts[i].password === password)) {
-          history.push('/landing');
-        }
-      }
-    } catch (err) {
-      window.alert('Erro ao efetuar login, tente novamente.');
-    }
+    login(email, password);
   }
-
-  async function loadAnalysts() {
-    const response = await api.get('/analysts');
-
-    setAnalysts(response.data);
-  }
-
-  useEffect(() => {
-    loadAnalysts();
-  }, []);
-
 
   return (
     <div className="login-container">
