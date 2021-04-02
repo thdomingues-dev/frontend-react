@@ -10,6 +10,7 @@ interface AuthContextData {
 
 interface Analyst {
   id: number;
+  name: string;
   user_id: number;
   email: string;
   password: string;

@@ -74,9 +74,9 @@ const Audits = () => {
 
   return (
     <div className="audits-container">
+      <PageHeader />
       {analyst.roles.includes("n2") &&
         <>
-          <PageHeader />
           <PageTitle
             title="Auditoria de logs"
             description="Analise as operações realizadas no sistema."
