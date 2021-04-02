@@ -150,84 +150,86 @@ const Cards = () => {
         <main>
           <ul>
             {cards.map((card: Card) => (
-              <div className="cards-content-group">
-                <li key={card.id.toString()}>
-                  <header>
-                    GREENROCK
-                  </header>
+              <div className="cards-content-layer">
+                <div className="cards-content-group">
+                  <li key={card.id.toString()}>
+                    <header>
+                      GREENROCK
+                    </header>
 
-                  <FiCreditCard style={{ color: "#FFF" }} />
+                    <FiCreditCard style={{ color: "#FFF" }} />
 
-                  <span>
-                    <div>
-                      <div className="cards-content-row">
-                        <p>{card.metadatas.name}</p>
-                      </div>
-
-                      {(isUpdatingUserName === card.id) &&
+                    <span>
+                      <div>
                         <div className="cards-content-row">
-                          <div className="cards-content-name">
-                            <input
-                              type="text"
-                              placeholder="Nome do usuário"
-                              onChange={(e) => { setUserName(e.target.value) }}
-                              autoComplete="off"
-                            />
-                            <FiCheckSquare onClick={() => { updatedUserName(card) }} />
+                          <p>{card.metadatas.name}</p>
+                        </div>
+
+                        {(isUpdatingUserName === card.id) &&
+                          <div className="cards-content-row">
+                            <div className="cards-content-name">
+                              <input
+                                type="text"
+                                placeholder="Nome do usuário"
+                                onChange={(e) => { setUserName(e.target.value) }}
+                                autoComplete="off"
+                              />
+                              <FiCheckSquare onClick={() => { updatedUserName(card) }} />
+                            </div>
                           </div>
-                        </div>
-                      }
+                        }
 
-                      <div className="cards-content-row">
-                        <p>{card.metadatas.digits}</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="cards-content-row">
-                        <strong>Status</strong>
-                        <p>{card.status}</p>
-                      </div>
-
-                      {analyst.roles.includes("n2") &&
                         <div className="cards-content-row">
-                          <strong>Limite</strong>
-                          <p>R$ {card.metadatas.limit}</p>
+                          <p>{card.metadatas.digits}</p>
                         </div>
-                      }
-                    </div>
-                  </span>
-                </li>
+                      </div>
 
-                <div className="cards-group-box">
-                  <button
-                    type="button"
-                    onClick={() => { approvedCard(card) }}
-                  >
-                    Aprovar
-                  </button>
+                      <div>
+                        <div className="cards-content-row">
+                          <strong>Status</strong>
+                          <p>{card.status}</p>
+                        </div>
 
-                  <button
-                    type="button"
-                    onClick={() => { rejectedCard(card) }}
-                  >
-                    Rejeitar
-                  </button>
+                        {analyst.roles.includes("n2") &&
+                          <div className="cards-content-row">
+                            <strong>Limite</strong>
+                            <p>R$ {card.metadatas.limit}</p>
+                          </div>
+                        }
+                      </div>
+                    </span>
+                  </li>
 
-                  <button
-                    type="button"
-                    onClick={() => { handleUserCard(card) }}
-                  >
-                    Atualizar
-                  </button>
-
-                  {analyst.roles.includes("n2") &&
+                  <div className="cards-group-box">
                     <button
                       type="button"
-                      onClick={() => { deletedCard(card) }}
+                      onClick={() => { approvedCard(card) }}
                     >
-                      Excluir
+                      Aprovar
+                  </button>
+
+                    <button
+                      type="button"
+                      onClick={() => { rejectedCard(card) }}
+                    >
+                      Rejeitar
+                  </button>
+
+                    <button
+                      type="button"
+                      onClick={() => { handleUserCard(card) }}
+                    >
+                      Atualizar
+                  </button>
+
+                    {analyst.roles.includes("n2") &&
+                      <button
+                        type="button"
+                        onClick={() => { deletedCard(card) }}
+                      >
+                        Excluir
                   </button>}
+                  </div>
                 </div>
               </div>
             ))}
