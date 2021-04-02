@@ -10,12 +10,17 @@ import './styles.css';
 const LandingPage = () => {
   const { analyst } = useContext(AuthContext);
 
+  function handleNameFormated() {
+    const analystName = analyst.name.split(" ");
+    return analystName[0];
+  }
+
   return (
     <div className="page-container">
       <PageHeader />
 
       <PageTitle
-        title="Bem-vindo, Thales!"
+        title={`Bem-vindo(a), ${handleNameFormated()}!`}
         description="Escolha uma das opções abaixo para continuar."
       />
 
