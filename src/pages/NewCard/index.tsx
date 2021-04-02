@@ -1,4 +1,5 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState, useContext } from 'react';
+import authService from '../../contexts/auth';
 import { useHistory } from 'react-router';
 
 import PageHeader from '../../components/PageHeader';
@@ -14,6 +15,8 @@ interface User {
 }
 
 const NewCard = () => {
+  const { analyst } = useContext(authService);
+
   const [users, setUsers] = useState<User[]>([]);
 
   const [name, setName] = useState('');
@@ -47,7 +50,7 @@ const NewCard = () => {
         after: {
           status: "requested"
         },
-        requestedBy: 1963,
+        requestedBy: analyst.user_id,
       });
 
       history.push('/cards');

@@ -21,16 +21,12 @@ interface Audit {
   requestedBy: number;
 }
 
-interface Analyst {
-  id: number;
-  email: string;
-}
-
 const Audits = () => {
   const { analyst } = useContext(AuthContext);
 
   const [audits, setAudits] = useState([]);
-  const [analysts, setAnalysts] = useState<Analyst[]>([]);
+  //const [analysts, setAnalysts] = useState<Analyst[]>([]);
+  const [users, setUsers] = useState<any>([]);
 
   async function loadAudits() {
     const response = await api.get('/audits');
@@ -38,15 +34,15 @@ const Audits = () => {
     setAudits(response.data);
   }
 
-  async function loadAnalysts() {
-    const response = await api.get('/analysts');
+  async function loadUsers() {
+    const response = await api.get('/users');
 
-    setAnalysts(response.data);
+    setUsers(response.data);
   }
 
   function findAnalyst(idRequester: number) {
-    for (let i = 0; i < analysts.length; i++) {
-      if (analysts[i].id === idRequester) return analysts[i].email;
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].id === idRequester) return users[i].name;
     }
     return idRequester;
   }
@@ -69,7 +65,7 @@ const Audits = () => {
 
   useEffect(() => {
     loadAudits();
-    loadAnalysts();
+    loadUsers();
   }, []);
 
   return (
