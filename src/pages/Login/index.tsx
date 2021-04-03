@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { FiChevronRight } from 'react-icons/fi';
+import { FiLogIn } from 'react-icons/fi';
 
 import { useContext } from 'react';
 import AuthContext from '../../contexts/auth';
@@ -52,7 +52,7 @@ const Login = () => {
         <div className="button-container">
           <div className="button-box">
             <span>
-              <FiChevronRight />
+              <FiLogIn />
             </span>
             <button type="submit">Entrar</button>
           </div>

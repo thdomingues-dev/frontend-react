@@ -37,6 +37,7 @@
 
 .login-container .login-box label {
   margin: 0.8rem 0;
+  font-weight: bold;
 }
 
 .login-container .login-box input {
@@ -102,6 +103,7 @@
   outline: 0;
   background: var(--background);
   color: rgb(0, 115, 77);
+  font-weight: bold;
  }
 
  .login-container .login-box .button-container .button-box:hover,
