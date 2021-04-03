@@ -4,6 +4,7 @@ import authService from '../services/auth';
 interface AuthContextData {
   logged: boolean;
   analyst: Analyst;
+  isWrongPassword: boolean;
   login: (arg0: string, arg1: string) => void;
   logout: () => void;
 }
@@ -22,6 +23,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export const AuthProvider: React.FC = ({ children }) => {
   const [analyst, setAnalyst] = useState<Analyst>({} as Analyst);
   const [logged, setLogged] = useState(false);
+  const [isWrongPassword, setIsWrongPassword] = useState(false);
 
   useEffect(() => {
     loadStoragedAnalyst();
@@ -42,15 +44,17 @@ export const AuthProvider: React.FC = ({ children }) => {
       await localStorage.setItem('@RAuth:analyst', JSON.stringify(analystResponse));
       setLogged(true);
     }
+    setIsWrongPassword(true);
   }
 
   function logout() {
     localStorage.clear();
     setLogged(false);
+    setIsWrongPassword(false);
   }
 
   return (
-    <AuthContext.Provider value={{ logged, analyst, login, logout }}>
+    <AuthContext.Provider value={{ logged, analyst, isWrongPassword, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

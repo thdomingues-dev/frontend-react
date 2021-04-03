@@ -9,7 +9,7 @@ import PageTitle from '../../components/PageTitle';
 import './styles.css';
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, isWrongPassword } = useContext(AuthContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -56,6 +56,10 @@ const Login = () => {
             </span>
             <button type="submit">Entrar</button>
           </div>
+
+          {isWrongPassword &&
+            <p>Usuário ou senha incorreto(s).</p>
+          }
         </div>
       </form>
     </div>
