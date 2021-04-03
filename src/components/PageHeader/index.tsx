@@ -14,6 +14,11 @@ const PageHeader = () => {
     history.goBack();
   }
 
+  function handleLogout() {
+    history.push('/');
+    logout();
+  }
+
   return (
     <header className="page-header">
       <strong>GREENROCK</strong>
@@ -24,7 +29,7 @@ const PageHeader = () => {
           Voltar
           </div>
         |
-          <div className="page-out" onClick={logout}>
+          <div className="page-out" onClick={handleLogout}>
           Sair
             <FiLogOut />
         </div>
