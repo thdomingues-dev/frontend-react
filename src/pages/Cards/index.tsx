@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import AuthContext from '../../contexts/auth';
-import { FiCreditCard, FiCheckSquare } from 'react-icons/fi';
+import { FiCreditCard, FiCheckSquare, FiXSquare } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -25,6 +25,7 @@ const Cards = () => {
   const [cards, setCards] = useState([]);
   const [userName, setUserName] = useState('');
   const [isUpdatingUserName, setIsUpdatingUserName] = useState(Number);
+  const [isUpdatedCard, setIsUpdatedCard] = useState(Number);
 
   async function loadCards() {
     const response = await api.get('/cards');
@@ -54,7 +55,7 @@ const Cards = () => {
 
       loadCards();
     } else {
-      alert("cartão já foi atualizado");
+      setIsUpdatedCard(card.id);
     }
   }
 
@@ -80,7 +81,7 @@ const Cards = () => {
 
       loadCards();
     } else {
-      alert("cartão já foi atualizado");
+      setIsUpdatedCard(card.id);
     }
   }
 
@@ -150,9 +151,9 @@ const Cards = () => {
         <main>
           <ul>
             {cards.map((card: Card) => (
-              <div className="cards-content-layer">
+              <div key={card.id.toString()} className="cards-content-layer">
                 <div className="cards-content-group">
-                  <li key={card.id.toString()}>
+                  <li>
                     <header>
                       GREENROCK
                     </header>
@@ -206,21 +207,21 @@ const Cards = () => {
                       onClick={() => { approvedCard(card) }}
                     >
                       Aprovar
-                  </button>
+                    </button>
 
                     <button
                       type="button"
                       onClick={() => { rejectedCard(card) }}
                     >
                       Rejeitar
-                  </button>
+                    </button>
 
                     <button
                       type="button"
                       onClick={() => { handleUserCard(card) }}
                     >
                       Atualizar
-                  </button>
+                    </button>
 
                     {analyst.roles.includes("n2") &&
                       <button
@@ -228,8 +229,17 @@ const Cards = () => {
                         onClick={() => { deletedCard(card) }}
                       >
                         Excluir
-                  </button>}
+                    </button>}
                   </div>
+                  {
+                    (isUpdatedCard === card.id) &&
+                    (
+                      <div className="cards-alert" onClick={() => { setIsUpdatedCard(0) }}>
+                        <p>Status do cartão já foi modificado</p>
+                        <FiXSquare />
+                      </div>
+                    )
+                  }
                 </div>
               </div>
             ))}
