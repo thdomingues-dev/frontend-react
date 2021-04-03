@@ -48,13 +48,25 @@ const Audits = () => {
   function translateToPortuguese(status: string) {
     switch (status.toLocaleLowerCase()) {
       case 'rejected':
-        return 'Rejeitado';
+        return 'Negado';
 
       case 'approved':
         return 'Aprovado';
 
       case 'requested':
         return 'Solicitado';
+
+      case 'new':
+        return 'Criado';
+
+      case 'deleted':
+        return 'Removido';
+
+      case 'card-status-change':
+        return 'Alteração status';
+
+      case 'card-name-change':
+        return 'Alteração nome';
 
       default:
         return status;
@@ -81,6 +93,7 @@ const Audits = () => {
               <ul>
                 <li>
                   <strong>ID</strong>
+                  <strong>Tipo</strong>
                   <strong>Data/Hora</strong>
                   <strong>Antes</strong>
                   <strong>Depois</strong>
@@ -90,6 +103,7 @@ const Audits = () => {
                 {audits.map((audit: Audit) => (
                   <li key={audit.id}>
                     <p>{audit.id}</p>
+                    <p>{translateToPortuguese(audit.type)}</p>
                     <p>{audit.createdAt}</p>
                     <p>{translateToPortuguese(audit.before.status)}</p>
                     <p>{translateToPortuguese(audit.after.status)}</p>
