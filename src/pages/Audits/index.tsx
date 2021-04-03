@@ -23,9 +23,7 @@ interface Audit {
 
 const Audits = () => {
   const { analyst } = useContext(AuthContext);
-
   const [audits, setAudits] = useState([]);
-  //const [analysts, setAnalysts] = useState<Analyst[]>([]);
   const [users, setUsers] = useState<any>([]);
 
   async function loadAudits() {
@@ -71,36 +69,42 @@ const Audits = () => {
   return (
     <div className="audits-container">
       <PageHeader />
-      {analyst.roles.includes("n2") &&
-        <>
-          <PageTitle
-            title="Auditoria de logs"
-            description="Analise as operações realizadas no sistema."
-          />
+      {analyst.roles.includes("n2") ?
+        (
+          <>
+            <PageTitle
+              title="Auditoria de logs"
+              description="Analise as operações realizadas no sistema."
+            />
 
-          <main>
-            <ul>
-              <li>
-                <strong>ID</strong>
-                <strong>Data/Hora</strong>
-                <strong>Antes</strong>
-                <strong>Depois</strong>
-                <strong>Analista</strong>
-              </li>
-
-              {audits.map((audit: Audit) => (
-                <li key={audit.id}>
-                  <p>{audit.id}</p>
-                  <p>{audit.createdAt}</p>
-                  <p>{translateToPortuguese(audit.before.status)}</p>
-                  <p>{translateToPortuguese(audit.after.status)}</p>
-                  <p>{findAnalyst(audit.requestedBy)}</p>
+            <main>
+              <ul>
+                <li>
+                  <strong>ID</strong>
+                  <strong>Data/Hora</strong>
+                  <strong>Antes</strong>
+                  <strong>Depois</strong>
+                  <strong>Analista</strong>
                 </li>
-              ))
-              }
-            </ul>
-          </main>
-        </>
+
+                {audits.map((audit: Audit) => (
+                  <li key={audit.id}>
+                    <p>{audit.id}</p>
+                    <p>{audit.createdAt}</p>
+                    <p>{translateToPortuguese(audit.before.status)}</p>
+                    <p>{translateToPortuguese(audit.after.status)}</p>
+                    <p>{findAnalyst(audit.requestedBy)}</p>
+                  </li>
+                ))
+                }
+              </ul>
+            </main>
+          </>
+        ) : (
+          <h1>
+            Usuário não possui acesso a esta página.
+          </h1>
+        )
       }
     </div>
   );
