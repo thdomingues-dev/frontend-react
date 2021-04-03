@@ -24,6 +24,9 @@ const NewCard = () => {
   const [digitsCard, setDigitsCard] = useState('');
   const [limitCard, setLimitCard] = useState('');
 
+  const [isValidUser, setIsValidUser] = useState(true);
+  const [isRequestSucceeded, setIsRequestSucceeded] = useState(false);
+
   const history = useHistory();
 
   async function handleCardRequire(e: FormEvent) {
@@ -32,6 +35,8 @@ const NewCard = () => {
     const response = isValidFeature();
 
     if (response) {
+      setIsValidUser(true);
+      setIsRequestSucceeded(true);
       await api.post('/cards/', {
         status: "requested",
         user_id: Number(userId),
@@ -53,7 +58,11 @@ const NewCard = () => {
         requestedBy: analyst.user_id,
       });
 
-      history.push('/cards');
+      setTimeout(() => {
+        history.push('/cards');
+      }, 1500);
+    } else {
+      setIsValidUser(false);
     }
 
   }
@@ -94,10 +103,11 @@ const NewCard = () => {
             value={name}
             onChange={(e) => { setName(e.target.value) }}
             autoComplete="off"
+            maxLength={70}
             required
           />
 
-          <label >ID usuário</label>
+          <label>Usuário ID</label>
           <input
             name="id"
             type="number"
@@ -107,13 +117,15 @@ const NewCard = () => {
             required
           />
 
-          <label>Dígitos cartão</label>
+          <label>Dígitos Cartão</label>
           <input
             name="digits"
             type="number"
             value={digitsCard}
             onChange={(e) => { setDigitsCard(e.target.value) }}
             autoComplete="off"
+            min="1"
+            max="100000000000000"
             required
           />
 
@@ -124,11 +136,28 @@ const NewCard = () => {
             value={limitCard}
             onChange={(e) => { setLimitCard(e.target.value) }}
             autoComplete="off"
+            min="1"
+            max="100000000000000"
             required
           />
 
           <div className="newcard-button-container">
-            <button type="submit">Solicitar</button>
+            {isValidUser ?
+              (
+                isRequestSucceeded ? (
+                  <>
+                    <button type="submit">Solicitar</button>
+                    <p id="submit-success">Solicitação enviada com sucesso.</p>
+                  </>
+                ) :
+                  (<button type="submit">Solicitar</button>)
+              ) : (
+                <>
+                  <button type="submit">Solicitar</button>
+                  <p>Este usuário não possue direito de solicitar cartão.</p>
+                </>
+              )
+            }
           </div>
         </form>
       </main>
