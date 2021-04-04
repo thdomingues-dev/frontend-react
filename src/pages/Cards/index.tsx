@@ -44,10 +44,13 @@ const Cards = () => {
 
       await api.post('/audits/', {
         createdAt: "2021-02-28T23:00:02.790Z",
+        type: "card-status-change",
         before: {
+          id: oldCard.id,
           status: oldCard.status
         },
         after: {
+          id: oldCard.id,
           status: "approved"
         },
         requestedBy: analyst.user_id,
@@ -70,10 +73,13 @@ const Cards = () => {
 
       await api.post('/audits/', {
         createdAt: "2021-02-28T23:00:02.790Z",
+        type: "card-status-change",
         before: {
+          id: oldCard.id,
           status: oldCard.status
         },
         after: {
+          id: oldCard.id,
           status: "rejected"
         },
         requestedBy: analyst.user_id,
@@ -92,10 +98,13 @@ const Cards = () => {
 
     await api.post('/audits/', {
       createdAt: "2021-02-28T23:00:02.790Z",
+      type: "card-remove",
       before: {
+        id: oldCard.id,
         status: oldCard.status
       },
       after: {
+        id: oldCard.id,
         status: "deleted"
       },
       requestedBy: analyst.user_id,
@@ -116,10 +125,13 @@ const Cards = () => {
 
     await api.post('/audits/', {
       createdAt: "2021-02-28T23:00:02.790Z",
+      type: "card-name-change",
       before: {
+        id: card.id,
         status: String(card.metadatas.name),
       },
       after: {
+        id: card.id,
         status: userName,
       },
       requestedBy: analyst.user_id,
@@ -173,6 +185,7 @@ const Cards = () => {
                                 type="text"
                                 placeholder="Nome do usuário"
                                 onChange={(e) => { setUserName(e.target.value) }}
+                                maxLength={70}
                                 autoComplete="off"
                               />
                               <FiCheckSquare onClick={() => { updatedUserName(card) }} />

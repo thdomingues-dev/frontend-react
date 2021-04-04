@@ -20,7 +20,6 @@ interface Audit {
     id: number;
     status: string;
   },
-  card_id: number;
   requestedBy: number;
 }
 
@@ -73,6 +72,9 @@ const Audits = () => {
 
       case 'card-request':
         return 'Solicitação cartão';
+
+      case 'card-remove':
+        return 'Exclusão cartão';
 
       default:
         return status;
