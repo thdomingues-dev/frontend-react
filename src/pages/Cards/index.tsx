@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import AuthContext from '../../contexts/auth';
 import { FiCreditCard, FiCheckSquare, FiXSquare } from 'react-icons/fi';
 
+import translateToPortuguese, { formatToBRL } from '../../utils/translate';
+
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
@@ -240,13 +242,13 @@ const Cards = () => {
                       <div>
                         <div className="cards-content-row">
                           <strong>Status</strong>
-                          <p>{card.status}</p>
+                          <p>{translateToPortuguese(card.status)}</p>
                         </div>
 
                         {analyst.roles.includes("n2") &&
                           <div className="cards-content-row">
                             <strong>Limite</strong>
-                            <p>R$ {card.metadatas.limit}</p>
+                            <p>{formatToBRL(card.metadatas.limit)}</p>
                           </div>
                         }
                       </div>

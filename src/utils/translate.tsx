@@ -33,3 +33,7 @@ const translateToPortuguese = (status: string) => {
 }
 
 export default translateToPortuguese;
+
+export const formatToBRL = (value: number) => {
+  return Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+}
