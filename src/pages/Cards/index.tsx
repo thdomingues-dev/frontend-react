@@ -22,10 +22,13 @@ interface Card {
 const Cards = () => {
   const { analyst } = useContext(AuthContext);
 
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState<Card[]>([]);
   const [userName, setUserName] = useState('');
+  const [searchedCard, setSearchedCard] = useState('');
+
   const [isUpdatingUserName, setIsUpdatingUserName] = useState(Number);
   const [isUpdatedCard, setIsUpdatedCard] = useState(Number);
+  const [isSearching, setIsSearching] = useState(false);
 
   async function loadCards() {
     const response = await api.get('/cards');
@@ -56,7 +59,7 @@ const Cards = () => {
         requestedBy: analyst.user_id,
       });
 
-      loadCards();
+      isSearching ? searchCard(card.id) : loadCards();
     } else {
       setIsUpdatedCard(card.id);
     }
@@ -85,7 +88,7 @@ const Cards = () => {
         requestedBy: analyst.user_id,
       });
 
-      loadCards();
+      isSearching ? searchCard(card.id) : loadCards();
     } else {
       setIsUpdatedCard(card.id);
     }
@@ -137,12 +140,33 @@ const Cards = () => {
       requestedBy: analyst.user_id,
     });
 
-    loadCards();
+    isSearching ? searchCard(card.id) : loadCards();
     setIsUpdatingUserName(0);
   }
 
   function handleUserCard(card: Card) {
     setIsUpdatingUserName(card.id);
+  }
+
+  async function searchCard(cardId: number) {
+    const response = await api.get('/cards');
+    let foundCard = false;
+
+    for (let index = 0; index < response.data.length; index++) {
+      if (response.data[index].id === cardId) {
+        setCards([response.data[index]]);
+        foundCard = true;
+      }
+    }
+
+    foundCard ? setIsSearching(true) : setIsSearching(false);
+  }
+
+  function handleClearSearch() {
+    ((document.getElementById("SearchedCard") as HTMLInputElement).value) = "";
+    setSearchedCard("");
+    setIsSearching(false);
+    loadCards();
   }
 
   useEffect(() => {
@@ -159,7 +183,22 @@ const Cards = () => {
       />
 
       <div className="cards-content">
-        <aside>Buscar cartão</aside>
+        <aside>
+          <p>Buscar Cartão</p>
+          <div className="cards-search">
+            <input
+              id="SearchedCard"
+              type="number"
+              placeholder="Informe id do cartão"
+              onChange={(e) => { setSearchedCard(e.target.value) }}
+            />
+            <div className="cards-search-buttons">
+              <button onClick={() => { searchCard(Number(searchedCard)) }}>Buscar</button>
+              <button onClick={handleClearSearch}>Limpar</button>
+            </div>
+          </div>
+        </aside>
+
         <main>
           <ul>
             {cards.map((card: Card) => (
