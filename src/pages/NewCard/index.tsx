@@ -33,11 +33,12 @@ const NewCard = () => {
     e.preventDefault();
 
     const response = isValidFeature();
+    let getCardId = {} as any;
 
     if (response) {
       setIsValidUser(true);
       setIsRequestSucceeded(true);
-      await api.post('/cards/', {
+      getCardId = await api.post('/cards/', {
         status: "requested",
         user_id: Number(userId),
         metadatas: {
@@ -49,11 +50,14 @@ const NewCard = () => {
 
       await api.post('/audits/', {
         createdAt: "2021-03-31T23:00:02.790Z",
+        type: 'card-request',
         before: {
-          status: "new"
+          status: "new",
+          id: getCardId.data.id,
         },
         after: {
-          status: "requested"
+          status: "requested",
+          id: getCardId.data.id,
         },
         requestedBy: analyst.user_id,
       });

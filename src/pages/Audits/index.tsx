@@ -13,11 +13,14 @@ interface Audit {
   createdAt: string;
   type: string;
   before: {
+    id: number;
     status: string;
   };
   after: {
+    id: number;
     status: string;
-  }
+  },
+  card_id: number;
   requestedBy: number;
 }
 
@@ -57,7 +60,7 @@ const Audits = () => {
         return 'Solicitado';
 
       case 'new':
-        return 'Criado';
+        return 'Novo';
 
       case 'deleted':
         return 'Removido';
@@ -67,6 +70,9 @@ const Audits = () => {
 
       case 'card-name-change':
         return 'Alteração nome';
+
+      case 'card-request':
+        return 'Solicitação cartão';
 
       default:
         return status;
@@ -93,20 +99,22 @@ const Audits = () => {
               <ul>
                 <li>
                   <strong>ID</strong>
-                  <strong>Tipo</strong>
                   <strong>Data/Hora</strong>
+                  <strong>Tipo</strong>
                   <strong>Antes</strong>
                   <strong>Depois</strong>
+                  <strong>ID Cartão</strong>
                   <strong>Analista</strong>
                 </li>
 
                 {audits.map((audit: Audit) => (
                   <li key={audit.id}>
                     <p>{audit.id}</p>
-                    <p>{translateToPortuguese(audit.type)}</p>
                     <p>{audit.createdAt}</p>
+                    <p>{translateToPortuguese(audit.type)}</p>
                     <p>{translateToPortuguese(audit.before.status)}</p>
                     <p>{translateToPortuguese(audit.after.status)}</p>
+                    <p>{audit.after.id}</p>
                     <p>{findAnalyst(audit.requestedBy)}</p>
                   </li>
                 ))
