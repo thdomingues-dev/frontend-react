@@ -48,7 +48,7 @@ const Cards = () => {
       });
 
       await api.post('/audits/', {
-        createdAt: "2021-02-28T23:00:02.790Z",
+        createdAt: new Date().toISOString(),
         type: "card-status-change",
         before: {
           id: oldCard.id,
@@ -77,7 +77,7 @@ const Cards = () => {
       });
 
       await api.post('/audits/', {
-        createdAt: "2021-02-28T23:00:02.790Z",
+        createdAt: new Date().toISOString(),
         type: "card-status-change",
         before: {
           id: oldCard.id,
@@ -102,7 +102,7 @@ const Cards = () => {
     await api.delete(`/cards/${card.id}`);
 
     await api.post('/audits/', {
-      createdAt: "2021-02-28T23:00:02.790Z",
+      createdAt: new Date().toISOString(),
       type: "card-remove",
       before: {
         id: oldCard.id,
@@ -129,7 +129,7 @@ const Cards = () => {
     });
 
     await api.post('/audits/', {
-      createdAt: "2021-02-28T23:00:02.790Z",
+      createdAt: new Date().toISOString(),
       type: "card-name-change",
       before: {
         id: card.id,
