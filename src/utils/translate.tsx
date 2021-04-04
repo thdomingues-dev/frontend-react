@@ -37,3 +37,19 @@ export default translateToPortuguese;
 export const formatToBRL = (value: number) => {
   return Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
 }
+
+export const formatToCPF = (value: string) => {
+  return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+}
+
+export const formatToBirthdate = (value: string) => {
+  const date = new Date(value);
+  let day = String(date.getDate());
+  let month = String(date.getMonth() + 1);
+  let year = date.getFullYear();
+
+  if (Number(day) < 10) day = '0' + day;
+  if (Number(month) < 10) month = '0' + month;
+
+  return day + "/" + month + "/" + year;
+}

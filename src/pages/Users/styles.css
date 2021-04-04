@@ -6,9 +6,8 @@
 }
 
 .users-container .users-content {
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 4rem 2rem;
+  margin: 0rem;
+  padding: 4rem 0rem;
 
   display: flex;
   flex-direction: row;
@@ -36,7 +35,7 @@
 }
 
 .users-container .users-content main ul li {
-  width: 20rem;
+  width: 100%;
   background: var(--white);
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;
@@ -50,28 +49,49 @@
 
   color: rgba(0, 115, 77, 0.8);
 
-  border-bottom: 1.5px solid var(--background);
+  border-bottom: 1px solid rgba(0, 115, 77, 0.37);
 }
 
 .users-container .users-content main ul li header svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  min-height: 1.75rem;
 }
 
 .users-container .users-content main ul li header strong {
   display: block;
+  max-width: 26rem;
   margin-left: 0.8rem;
+  color: rgb(0, 115, 77);
 }
 
-.users-container .users-content main ul li > strong {
+.users-container .users-content main ul li > strong,
+.users-container .users-content main ul li .users-content-group strong {
   display: block;
   margin-top: 1rem;
   font-size: 0.8rem;
-  color: var(--text);
+  color: rgb(0, 115, 77);
 }
 
-.users-container .users-content main ul li p {
+.users-container .users-content main ul li p,
+.users-container .users-content main ul li .users-content-group p {
   font-size: 0.9rem;
   line-height: 1.25rem;
+  max-width: 22rem;
+  word-break: break-word;
   margin-bottom: 1rem;
+}
+
+.users-container .users-content main ul li .users-content-group {
+  display: flex;
+}
+
+.users-container .users-content main ul li .users-content-group .users-content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.users-container .users-content main ul li .users-content-group .users-content-column:not(:first-child) {
+  margin-left: 1rem;
 }
