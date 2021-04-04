@@ -39,6 +39,8 @@ const NewCard = () => {
       setIsValidUser(true);
       setIsRequestSucceeded(true);
       getCardId = await api.post('/cards/', {
+        createdAt: new Date().toISOString(),
+        updatedAt: null,
         status: "requested",
         user_id: Number(userId),
         metadatas: {
@@ -49,7 +51,7 @@ const NewCard = () => {
       });
 
       await api.post('/audits/', {
-        createdAt: "2021-03-31T23:00:02.790Z",
+        createdAt: new Date().toISOString(),
         type: 'card-request',
         before: {
           status: "new",
