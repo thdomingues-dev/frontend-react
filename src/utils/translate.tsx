@@ -53,3 +53,20 @@ export const formatToBirthdate = (value: string) => {
 
   return day + "/" + month + "/" + year;
 }
+
+export const formatToLog = (value: string) => {
+  const date = new Date(value);
+  let day = String(date.getDate());
+  let month = String(date.getMonth() + 1);
+  let year = String(date.getFullYear()).substring(2, 4);
+
+  let hours = String(date.getHours());
+  let minutes = String(date.getMinutes());
+
+  if (Number(day) < 10) day = '0' + day;
+  if (Number(month) < 10) month = '0' + month;
+  if (Number(hours) < 10) hours = '0' + hours;
+  if (Number(minutes) < 10) minutes = '0' + minutes;
+
+  return hours + ":" + minutes + " " + day + "/" + month + "/" + year;
+}

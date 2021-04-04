@@ -4,7 +4,7 @@ import AuthContext from '../../contexts/auth';
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
 
-import translateToPortuguese from '../../utils/translate';
+import translateToPortuguese, { formatToLog } from '../../utils/translate';
 
 import api from '../../services/api';
 
@@ -69,7 +69,7 @@ const Audits = () => {
               <ul>
                 <li>
                   <strong>ID</strong>
-                  <strong>Data/Hora</strong>
+                  <strong>Hora/Data</strong>
                   <strong>Tipo</strong>
                   <strong>Antes</strong>
                   <strong>Depois</strong>
@@ -80,7 +80,7 @@ const Audits = () => {
                 {audits.map((audit: Audit) => (
                   <li key={audit.id}>
                     <p>{audit.id}</p>
-                    <p>{audit.createdAt}</p>
+                    <p>{formatToLog(audit.createdAt)}</p>
                     <p>{translateToPortuguese(audit.type)}</p>
                     <p>{translateToPortuguese(audit.before.status)}</p>
                     <p>{translateToPortuguese(audit.after.status)}</p>
