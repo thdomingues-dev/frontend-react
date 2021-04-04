@@ -4,6 +4,8 @@ import AuthContext from '../../contexts/auth';
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
 
+import translateToPortuguese from '../../utils/translate';
+
 import api from '../../services/api';
 
 import './styles.css';
@@ -45,40 +47,6 @@ const Audits = () => {
       if (users[i].id === idRequester) return users[i].name;
     }
     return idRequester;
-  }
-
-  function translateToPortuguese(status: string) {
-    switch (status.toLocaleLowerCase()) {
-      case 'rejected':
-        return 'Negado';
-
-      case 'approved':
-        return 'Aprovado';
-
-      case 'requested':
-        return 'Solicitado';
-
-      case 'new':
-        return 'Novo';
-
-      case 'deleted':
-        return 'Removido';
-
-      case 'card-status-change':
-        return 'Alteração status';
-
-      case 'card-name-change':
-        return 'Alteração nome';
-
-      case 'card-request':
-        return 'Solicitação cartão';
-
-      case 'card-remove':
-        return 'Exclusão cartão';
-
-      default:
-        return status;
-    }
   }
 
   useEffect(() => {
