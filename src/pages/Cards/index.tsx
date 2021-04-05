@@ -14,6 +14,7 @@ import './styles.css';
 
 interface Card {
   id: number;
+  user_id: number;
   status: string;
   metadatas: {
     name: string;
@@ -45,6 +46,8 @@ const Cards = () => {
 
     if (oldCard.status === 'requested') {
       await api.put(`/cards/${card.id}`, {
+        id: card.id,
+        user_id: card.user_id,
         status: "approved",
         metadatas: card.metadatas,
       });
@@ -74,6 +77,8 @@ const Cards = () => {
 
     if (oldCard.status === 'requested') {
       await api.put(`/cards/${card.id}`, {
+        id: card.id,
+        user_id: card.user_id,
         status: "rejected",
         metadatas: card.metadatas,
       });
@@ -122,6 +127,8 @@ const Cards = () => {
 
   async function updatedUserName(card: Card) {
     await api.put(`/cards/${card.id}`, {
+      id: card.id,
+      user_id: card.user_id,
       status: card.status,
       metadatas: {
         name: userName,
@@ -249,6 +256,18 @@ const Cards = () => {
                       </div>
 
                       <div>
+                        <div className="cards-content-column">
+                          <div className="cards-content-row">
+                            <strong>ID</strong>
+                            <p>{card.id}</p>
+                          </div>
+
+                          <div className="cards-content-row">
+                            <strong>ID_Cliente</strong>
+                            <p>{card.user_id}</p>
+                          </div>
+                        </div>
+
                         <div className="cards-content-row">
                           <strong>Status</strong>
                           <p>{translateToPortuguese(card.status)}</p>

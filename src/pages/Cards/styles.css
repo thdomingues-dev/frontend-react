@@ -121,6 +121,12 @@
   color: var(--white);
 }
 
+.cards-container .cards-content main ul .cards-content-layer .cards-content-group li span .cards-content-column {
+  display: flex;
+  flex-direction: row;
+  width: 12rem;
+}
+
 .cards-container .cards-content main ul .cards-content-layer .cards-content-group li span .cards-content-row {
   display: flex;
   flex-direction: column;
@@ -171,6 +177,7 @@
   margin-top: 0.2rem;
   font-size: 0.8rem;
   margin-left: 3rem;
+  word-break: break-word;
 }
 
 .cards-container .cards-content main ul .cards-content-layer .cards-content-group .cards-alert {
