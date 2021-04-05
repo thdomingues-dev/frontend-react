@@ -7,6 +7,7 @@ import { formatToBRL, formatToCPF, formatToBirthdate } from '../../utils/transla
 
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
+import SearchUser from '../../components/SearchUser';
 
 import api from '../../services/api';
 
@@ -28,10 +29,12 @@ interface User {
   }
 }
 
-
 const Users = () => {
   const { analyst } = useContext(AuthContext);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
+
+  const [searchedUser, setSearchedUser] = useState('');
+  const [isUserFound, setIsUserFound] = useState(true);
 
   async function loadUsers() {
     const response = await api.get('/users');
@@ -42,6 +45,31 @@ const Users = () => {
   function checkCreditCard(features: number[]) {
     if (features.includes(0)) return 'Elegível';
     return 'Não elegível';
+  }
+
+  function handleChange(e: any) {
+    setSearchedUser(e.target.value);
+  }
+
+  async function searchUser(userId: number) {
+    const response = await api.get('/users');
+    let foundUser = false;
+
+    for (let index = 0; index < response.data.length; index++) {
+      if (response.data[index].id === userId) {
+        setUsers([response.data[index]]);
+        foundUser = true;
+      }
+    }
+
+    foundUser ? setIsUserFound(true) : setIsUserFound(false);
+  }
+
+  function clearSearch() {
+    ((document.getElementById("SearchedUser") as HTMLInputElement).value) = "";
+    setSearchedUser('');
+    setIsUserFound(true);
+    loadUsers();
   }
 
   useEffect(() => {
@@ -59,7 +87,13 @@ const Users = () => {
 
       <div className="users-content">
         <aside>
-          <div>Buscar users</div>
+          <SearchUser
+            id="SearchedUser"
+            isUserFound={isUserFound}
+            inputChange={handleChange}
+            handleUser={() => { searchUser(Number(searchedUser)) }}
+            handleClearSearch={clearSearch}
+          />
         </aside>
         <main>
           <ul>

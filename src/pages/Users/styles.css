@@ -15,7 +15,7 @@
 }
 
 .users-container .users-content aside {
-  width: 20rem;
+  width: 18rem;
   background: var(--white);
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;
