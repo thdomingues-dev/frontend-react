@@ -1,37 +1,40 @@
 import './styles.css';
 
-interface SearchUserProps {
+interface SearchBoxProps {
   id: string;
-  isUserFound: boolean;
+  title: string;
+  alert: string;
+  description: string;
+  isTargetFound: boolean;
   inputChange: (e: any) => void;
-  handleUser: () => void;
+  handleTarget: () => void;
   handleClearSearch: () => void;
 }
 
-const SearchUser = (props: SearchUserProps) => {
+const SearchBox = (props: SearchBoxProps) => {
   return (
     <>
-      <p>Buscar usuário</p>
+      <p>{props.title}</p>
       <div className="search-group">
         <input
           type="text"
           id={props.id}
           onChange={props.inputChange}
-          placeholder="Informe id do usuário"
+          placeholder={props.description}
           autoComplete="off"
         />
 
         <div className="search-buttons">
-          <button onClick={props.handleUser}>Buscar</button>
+          <button onClick={props.handleTarget}>Buscar</button>
           <button onClick={props.handleClearSearch}>Limpar</button>
         </div>
 
-        {!props.isUserFound &&
-          <p>Usuário não encontrado.</p>
+        {!props.isTargetFound &&
+          <p>{props.alert}</p>
         }
       </div>
     </>
   );
 }
 
-export default SearchUser;
+export default SearchBox;

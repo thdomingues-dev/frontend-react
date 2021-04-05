@@ -7,7 +7,7 @@ import { formatToBRL, formatToCPF, formatToBirthdate } from '../../utils/transla
 
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
-import SearchUser from '../../components/SearchUser';
+import SearchBox from '../../components/SearchBox';
 
 import api from '../../services/api';
 
@@ -87,11 +87,14 @@ const Users = () => {
 
       <div className="users-content">
         <aside>
-          <SearchUser
+          <SearchBox
             id="SearchedUser"
-            isUserFound={isUserFound}
+            title="Buscar Usuário"
+            description="Informe id usuário"
+            alert="Usuário não encontrado."
+            isTargetFound={isUserFound}
             inputChange={handleChange}
-            handleUser={() => { searchUser(Number(searchedUser)) }}
+            handleTarget={() => { searchUser(Number(searchedUser)) }}
             handleClearSearch={clearSearch}
           />
         </aside>

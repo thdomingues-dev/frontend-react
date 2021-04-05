@@ -8,6 +8,7 @@ import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
 import PageTitle from '../../components/PageTitle';
+import SearchBox from '../../components/SearchBox';
 
 import './styles.css';
 
@@ -28,9 +29,10 @@ const Cards = () => {
   const [userName, setUserName] = useState('');
   const [searchedCard, setSearchedCard] = useState('');
 
-  const [isUpdatingUserName, setIsUpdatingUserName] = useState(Number);
   const [isUpdatedCard, setIsUpdatedCard] = useState(Number);
+  const [isUpdatingUserName, setIsUpdatingUserName] = useState(Number);
   const [isSearching, setIsSearching] = useState(false);
+  const [isCardFound, setIsCardFound] = useState(true);
 
   async function loadCards() {
     const response = await api.get('/cards');
@@ -160,15 +162,25 @@ const Cards = () => {
         foundCard = true;
       }
     }
-
-    foundCard ? setIsSearching(true) : setIsSearching(false);
+    if (foundCard) {
+      setIsSearching(true);
+      setIsCardFound(true);
+    } else {
+      setIsSearching(false);
+      setIsCardFound(false);
+    }
   }
 
   function handleClearSearch() {
     ((document.getElementById("SearchedCard") as HTMLInputElement).value) = "";
     setSearchedCard("");
     setIsSearching(false);
+    setIsCardFound(true);
     loadCards();
+  }
+
+  function handleChange(e: any) {
+    setSearchedCard(e.target.value);
   }
 
   useEffect(() => {
@@ -186,19 +198,16 @@ const Cards = () => {
 
       <div className="cards-content">
         <aside>
-          <p>Buscar Cartão</p>
-          <div className="cards-search">
-            <input
-              id="SearchedCard"
-              type="number"
-              placeholder="Informe id do cartão"
-              onChange={(e) => { setSearchedCard(e.target.value) }}
-            />
-            <div className="cards-search-buttons">
-              <button onClick={() => { searchCard(Number(searchedCard)) }}>Buscar</button>
-              <button onClick={handleClearSearch}>Limpar</button>
-            </div>
-          </div>
+          <SearchBox
+            id="SearchedCard"
+            title="Buscar Cartão"
+            description="Informe id cartão"
+            alert="Cartão não encontrado."
+            isTargetFound={isCardFound}
+            inputChange={handleChange}
+            handleTarget={() => { searchCard(Number(searchedCard)) }}
+            handleClearSearch={handleClearSearch}
+          />
         </aside>
 
         <main>
