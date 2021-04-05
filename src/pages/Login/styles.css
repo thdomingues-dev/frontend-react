@@ -1,4 +1,4 @@
-.login-container {
+.login-container  {
   width: 100vw;
   height: 100vh;
 
@@ -115,4 +115,23 @@
  .login-container .login-box .button-container .button-box:hover,
 .login-container .login-box input:hover  {
   box-shadow: 0 0 0.2rem rgba(0, 115, 77, 0.7);
+}
+
+
+@media (max-width: 56.25rem) {
+  .login-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+
+  .login-container .login-title {
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .login-container  .login-box {
+    margin: 0;
+    margin-bottom: 10rem;
+  }
 }
