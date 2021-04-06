@@ -1,12 +1,11 @@
 .newcard-container {
   display: flex;
   flex-direction: column;
-  padding: 0 20rem;
 }
 
 .newcard-container main {
+  margin: 0 auto;
   margin-top: 4rem;
-  padding: 0 18rem;
 }
 
 .newcard-container main form {
@@ -16,6 +15,8 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     border-radius: 0.25rem;
     padding: 2rem 4rem; 
+    min-width: 44.7rem;
+   
   
     background: var(--white);
 }
@@ -81,4 +82,17 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; 
+}
+
+
+@media (max-width: 68.75rem) {
+  .newcard-container main form {
+    min-width: 36rem;
+   }
+ }
+
+@media (max-width: 56.25rem) {
+  .newcard-container main form {
+    min-width: 34rem;
+  }
 }
