@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12
-        # with:
-        #   heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        #   heroku_app_name: "nome-do-meu-app"
-        #   heroku_email: "meu-email"
+         with:
+           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+           heroku_app_name: "green-rock"
+           heroku_email: "thdomingues.dev@gmail.com"
