@@ -23,7 +23,7 @@ const LandingPage = () => {
         <div className="page-title">
           <PageTitle
             title={`Bem-vindo(a), ${handleNameFormated()}!`}
-            description="Escolha uma das opções ao lado para continuar."
+            description="Escolha uma das opções para continuar."
           />
         </div>
 
