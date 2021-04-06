@@ -1,0 +1,21 @@
+.title-container h1,
+.title-container p {
+  width: 75%;
+  margin: 0 auto;
+}
+
+@media (max-width: 68.75rem) {
+  .title-container h1,
+  .title-container p {
+    width: 80%;
+    margin: 0 auto;
+  }
+ }
+
+@media (max-width: 56.25rem) {
+  .title-container h1,
+  .title-container p {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

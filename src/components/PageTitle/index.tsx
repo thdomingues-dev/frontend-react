@@ -7,10 +7,10 @@ interface TitleProps {
 
 const PageTitle = (props: TitleProps) => {
   return (
-    <>
+    <div className="title-container">
       <h1>{props.title}</h1>
       <p>{props.description}</p>
-    </>
+    </div>
   );
 }
 

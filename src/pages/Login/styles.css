@@ -13,11 +13,7 @@
 .login-container .login-title h1 {
   color: var(--white);
   font-size: 5rem;
-}
-
-.login-container .login-title p {
-  margin-top: -1rem;
-  margin-left: 0.3rem;
+  margin: 0;
 }
 
 .login-container .login-box {
@@ -130,7 +126,7 @@
     text-align: center;
   }
 
-  .login-container  .login-box {
+  .login-container .login-box {
     margin: 0;
     margin-bottom: 10rem;
   }
