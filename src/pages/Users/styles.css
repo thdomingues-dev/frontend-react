@@ -23,6 +23,7 @@
 
 .users-container .users-content main {
   flex: 1;
+  width: 51.5rem;
   margin-left: 1.5rem;
 }
 
@@ -104,14 +105,77 @@
     place-items: center;
     padding-left: 0;
     padding-right: 0;
+    margin: 0 auto;
   }
 
   .users-container .users-content aside {
+    max-width: 30rem;
     width: 100%;
   }
 
   .users-container .users-content main {
-    margin: 0 auto;
+    max-width: 30rem;
     width: 100%;
+    margin: 0 auto;
   }
 }
+
+@media (max-width: 96.56rem) {
+  .users-container .users-content,
+  .users-container .users-content main ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    place-items: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+
+  .users-container .users-content aside {
+    min-width: 30rem;
+    width: 90%;
+  }
+
+  .users-container .users-content main {
+    min-width: 30rem;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 96.56rem) {
+  .users-container .users-content,
+  .users-container .users-content main ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    place-items: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+  }
+
+  .users-container .users-content aside {
+    min-width: 25rem;
+    width: 90%;
+  }
+
+  .users-container .users-content main {
+    min-width: 25rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 45rem) {
+  .users-container .users-content aside {
+    min-width: 30rem;
+    width: 80%;
+  }
+
+  .users-container .users-content main {
+    min-width: 30rem;
+    width: 80%;
+  }
+}
+
