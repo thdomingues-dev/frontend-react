@@ -1,13 +1,12 @@
 .users-container {
   display: flex;
   flex-direction: column;
-
-  padding: 0 20rem;
 }
 
 .users-container .users-content {
-  margin: 0rem;
-  padding: 4rem 0rem;
+  max-width: 75rem;
+  margin: 0rem auto;
+  padding: 4rem 2rem;
 
   display: flex;
   flex-direction: row;
@@ -94,4 +93,25 @@
 
 .users-container .users-content main ul li .users-content-group .users-content-column:not(:first-child) {
   margin-left: 1rem;
+}
+
+@media (max-width: 96.56rem) {
+  .users-container .users-content,
+  .users-container .users-content main ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    place-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .users-container .users-content aside {
+    width: 100%;
+  }
+
+  .users-container .users-content main {
+    margin: 0 auto;
+    width: 100%;
+  }
 }
