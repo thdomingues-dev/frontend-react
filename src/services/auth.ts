@@ -27,4 +27,3 @@ async function authService(email: string, password: string) {
 }
 
 export default authService;
-
