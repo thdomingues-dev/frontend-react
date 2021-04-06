@@ -1,8 +1,6 @@
 .cards-container {
   display: flex;
   flex-direction: column;
-
-  padding: 0 20rem;
 }
 
 .cards-container .cards-content {
@@ -256,4 +254,24 @@
 .cards-container .cards-content main ul .cards-group-box button:nth-child(4):hover {
   background: rgb(235, 32, 32);
   color: var(--white);
+}
+
+@media (max-width: 72.50rem) {
+  .cards-container .cards-content {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    place-items: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .cards-container .cards-content aside {
+    width: 90%;
+  }
+
+  .cards-container .cards-content main {
+    margin: 0 auto;
+    width: 100%;
+  }
 }
