@@ -3,8 +3,11 @@
   flex-direction: row;
   justify-content: space-between;
 
-  margin-top: 2rem;
   padding: 2rem 0;
+
+  width: 75%;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .page-header strong {
@@ -52,4 +55,17 @@
 .page-header .page-button-container .page-back:hover,
 .page-header .page-button-container  .page-out:hover {
   color: var(--green-stone);
+}
+
+
+@media (max-width: 68.75rem) {
+  .page-header {
+    width: 80%;
+  }
+}
+
+@media (max-width: 56.25rem) {
+  .page-header {
+    width: 90%;
+  }
 }
