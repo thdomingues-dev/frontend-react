@@ -12,6 +12,9 @@ const translateToPortuguese = (status: string) => {
     case 'new':
       return 'Novo';
 
+    case 'undefined':
+      return ' ';
+
     case 'deleted':
       return 'Removido';
 
