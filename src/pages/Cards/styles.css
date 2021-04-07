@@ -267,6 +267,7 @@
   }
 
   .cards-container .cards-content aside {
+    min-width: 30rem;
     width: 90%;
   }
 
