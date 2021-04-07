@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.audits-container h1 {
+  width: 75%;
+  margin: 0 auto;
+}
+
 .audits-container main {
   width: 75%;
   max-width: 80rem;
@@ -58,11 +63,19 @@
   .audits-container main {
     padding: 4rem 0;
   }
+
+  .audits-container h1 {
+    width: 80%;
+  }
  }
 
 @media (max-width: 56.25rem) {
   .audits-container main {
     width: 90%;
     padding: 4rem 0;
+  }
+
+  .audits-container h1 {
+    width: 90%;
   }
 }
