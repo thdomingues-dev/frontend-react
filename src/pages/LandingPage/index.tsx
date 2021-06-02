@@ -33,6 +33,12 @@ const LandingPage = () => {
 
             <div className="resource-group">
               <ResourceButton
+                path="/newuser"
+                description=" Criar usuário"
+                icon="FiUserPlus"
+              />
+
+              <ResourceButton
                 path="/users"
                 description=" Visualizar usuários"
                 icon="FiUsers"

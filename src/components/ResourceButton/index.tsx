@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiChevronRight, FiUsers, FiFileText } from 'react-icons/fi';
+import { FiChevronRight, FiUsers, FiFileText, FiUserPlus } from 'react-icons/fi';
 import { AiOutlineIdcard } from 'react-icons/ai';
 import { FaRegCreditCard } from 'react-icons/fa';
 
@@ -17,6 +17,14 @@ const ResourceButton = ({ path, description, icon }: ButtonProps) => {
       return (<Link to={path}>
         <span>
           <FiUsers />
+        </span>
+        <p>{description}</p>
+      </Link>);
+    
+    case 'FiUserPlus':
+      return (<Link to={path}>
+        <span>
+          <FiUserPlus />
         </span>
         <p>{description}</p>
       </Link>);
