@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "16.2.x"
+    "node": "16.4.x"
   },
   "cacheDirectories": [
-    "node_modules",
-    "server/node_modules"
+    "node_modules"
   ],
   "dependencies": {
     "@types/node": "^12.0.0",
@@ -28,12 +27,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"yarn run dev:server\" \"yarn run dev:client\"",
-    "build": "yarn run build:server && yarn run build:client",
-    "build:server": "cd ./server && yarn && yarn build",
-    "dev:client": "react-scripts start",
-    "dev:server": "yarn run build:server && cd ./server && yarn start",
+    "dev": "concurrently --kill-others \"yarn run dev:client\"",
+    "build": "yarn run build:client",
     "build:client": "yarn && react-scripts build",
+    "dev:client": "react-scripts start",
     "start": "pm2-runtime start pm2.json --env production",
     "serve:kill": "pm2 kill"
   },
