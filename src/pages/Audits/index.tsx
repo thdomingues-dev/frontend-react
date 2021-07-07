@@ -12,7 +12,7 @@ import './styles.css';
 
 interface Audit {
   id: number;
-  createdAt: string;
+  created_at: string;
   type: string;
   before: {
     id: number;
@@ -22,7 +22,7 @@ interface Audit {
     id: number;
     status: string;
   },
-  requestedBy: number;
+  analyst_id: number;
 }
 
 const Audits = () => {
@@ -44,7 +44,7 @@ const Audits = () => {
 
   function findAnalyst(idRequester: number) {
     for (let i = 0; i < users.length; i++) {
-      if (users[i].id === idRequester) return users[i].name;
+      if (users[i]?.id === idRequester) return users[i]?.name;
     }
     return idRequester;
   }
@@ -78,14 +78,14 @@ const Audits = () => {
                 </li>
 
                 {audits.map((audit: Audit) => (
-                  <li key={audit.id}>
-                    <p>{audit.id}</p>
-                    <p>{formatToLog(audit.createdAt)}</p>
-                    <p>{translateToPortuguese(audit.type)}</p>
-                    <p>{translateToPortuguese(audit.before.status)}</p>
-                    <p>{translateToPortuguese(audit.after.status)}</p>
-                    <p>{audit.after.id}</p>
-                    <p>{findAnalyst(audit.requestedBy)}</p>
+                  <li key={audit?.id}>
+                    <p>{audit?.id}</p>
+                    <p>{formatToLog(audit?.created_at)}</p>
+                    <p>{translateToPortuguese(audit?.type)}</p>
+                    <p>{translateToPortuguese(audit?.before?.status)}</p>
+                    <p>{translateToPortuguese(audit?.after?.status)}</p>
+                    <p>{audit?.after?.id}</p>
+                    <p>{findAnalyst(audit?.analyst_id)}</p>
                   </li>
                 ))
                 }

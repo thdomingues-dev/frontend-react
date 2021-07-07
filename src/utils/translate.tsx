@@ -18,7 +18,7 @@ const translateToPortuguese = (status: string) => {
     case 'deleted':
       return 'Removido';
 
-    case 'card-status-change':
+    case 'status_change':
       return 'Alteração status';
 
     case 'card-name-change':

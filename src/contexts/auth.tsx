@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import authService from '../services/auth';
+import api from '../services/api'
 
 interface AuthContextData {
   logged: boolean;
@@ -25,23 +26,25 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [logged, setLogged] = useState(false);
   const [isWrongPassword, setIsWrongPassword] = useState(false);
 
-  useEffect(() => {
-    loadStoragedAnalyst();
-  }, []);
 
   async function loadStoragedAnalyst() {
     const storagedAnalyst = await localStorage.getItem('@RAuth:analyst');
     if (storagedAnalyst) {
-      setAnalyst(JSON.parse(storagedAnalyst));
+      const { user, token } = JSON.parse(storagedAnalyst)
+      api.defaults.headers['Authorization'] = `Bearer ${token}`
+
+      setAnalyst(user);
       setLogged(true);
     }
   }
 
   async function login(email: string, password: string) {
-    const analystResponse = await authService(email, password);
-    if (analystResponse) {
-      setAnalyst(analystResponse);
-      await localStorage.setItem('@RAuth:analyst', JSON.stringify(analystResponse));
+    const {user, token} = await authService(email, password);
+    if (user && token) {
+      await localStorage.setItem('@RAuth:analyst', JSON.stringify({ user, token}));
+      api.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+      setAnalyst(user);
       setLogged(true);
     }
     setIsWrongPassword(true);
@@ -52,6 +55,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     setLogged(false);
     setIsWrongPassword(false);
   }
+
+  useEffect(() => {
+    loadStoragedAnalyst();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ logged, analyst, isWrongPassword, login, logout }}>

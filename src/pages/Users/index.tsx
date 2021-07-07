@@ -18,7 +18,7 @@ interface User {
   name: string;
   document: number;
   email: string;
-  BirthDate: string;
+  birthDate: string;
   salaryBase: number;
   enabledFeatures: number[];
   address: {
@@ -124,7 +124,7 @@ const Users = () => {
 
                     <div className="users-content-column">
                       <strong>Nascimento</strong>
-                      <p>{formatToBirthdate(user.BirthDate)}</p>
+                      <p>{formatToBirthdate(user.birthDate)}</p>
                     </div>
                   </div>
 
