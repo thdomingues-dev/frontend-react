@@ -47,6 +47,7 @@ export const formatToCPF = (value: string) => {
 
 export const formatToBirthdate = (value: string) => {
   const date = new Date(value);
+
   let day = String(date.getDate());
   let month = String(date.getMonth() + 1);
   let year = date.getFullYear();
@@ -54,7 +55,7 @@ export const formatToBirthdate = (value: string) => {
   if (Number(day) < 10) day = '0' + day;
   if (Number(month) < 10) month = '0' + month;
 
-  return day + "/" + month + "/" + year;
+  return date.toString() === 'Invalid Date' ? '' : (day + "/" + month + "/" + year);
 }
 
 export const formatToLog = (value: string) => {

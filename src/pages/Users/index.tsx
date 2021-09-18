@@ -124,7 +124,7 @@ const Users = () => {
 
                     <div className="users-content-column">
                       <strong>Nascimento</strong>
-                      <p>{formatToBirthdate(user.birthDate)}</p>
+                      <p>{formatToBirthdate(user?.birthDate)}</p>
                     </div>
                   </div>
 
