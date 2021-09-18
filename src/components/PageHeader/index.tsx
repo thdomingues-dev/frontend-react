@@ -34,7 +34,7 @@ const PageHeader = () => {
             <FiLogOut />
         </div>
       </div>
-    </header >
+    </header>
   );
 }
 
