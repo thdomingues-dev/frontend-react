@@ -3,7 +3,7 @@ import api from './api';
 async function authService(email: string, password: string) {
   try {
     const { data: user } = await api.post(`/authenticate`,  { email, password });
-    console.log(user)
+  
     if (user) {
       return user;
     }
