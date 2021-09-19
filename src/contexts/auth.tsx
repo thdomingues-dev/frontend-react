@@ -26,7 +26,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [logged, setLogged] = useState(false);
   const [isWrongPassword, setIsWrongPassword] = useState(false);
 
-
   async function loadStoragedAnalyst() {
     const storagedAnalyst = await localStorage.getItem('@RAuth:analyst');
     if (storagedAnalyst) {
@@ -35,11 +34,13 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       setAnalyst(user);
       setLogged(true);
+    } else {
+      setLogged(false);
     }
   }
 
   async function login(email: string, password: string) {
-    const {user, token} = await authService(email, password);
+    const { user, token } = await authService(email, password);
     if (user && token) {
       await localStorage.setItem('@RAuth:analyst', JSON.stringify({ user, token}));
       api.defaults.headers['Authorization'] = `Bearer ${token}`;
