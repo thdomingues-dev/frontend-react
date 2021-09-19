@@ -1,0 +1,96 @@
+.newuser-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.newuser-container main {
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.newuser-container main form {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  padding: 2rem 4rem;
+  min-width: 44.7rem;
+
+  background: var(--white);
+}
+
+.newuser-container main form label {
+  margin-top: 1.25rem;
+  font-weight: bold;
+  color: rgba(0, 115, 77, 0.8);
+}
+
+.newuser-container main form input {
+  margin-top: 0.5rem;
+  line-height: 2rem;
+
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
+  background: var(--background);
+  outline: none;
+
+  transition: box-shadow 0.2s;
+}
+
+.newuser-container main form .newuser-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.newuser-container main form .newuser-button-container p {
+  color: rgb(255, 0, 0);
+}
+
+.newuser-container main form .newuser-button-container #submit-success {
+  color: rgba(0, 115, 77, 0.8);
+}
+
+.newuser-container main form button {
+  width: 12rem;
+  height: 3rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+
+  border: 0;
+  border-radius: 0.25rem;
+
+  outline: 0;
+  background: rgba(0, 115, 77, 0.8);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  color: var(--white);
+  font-weight: bold;
+
+  transition: box-shadow 0.2s;
+}
+
+.newuser-container main form input:hover,
+.newuser-container main form button:hover {
+  box-shadow: 0 0 0.3rem rgba(0, 115, 77, 0.8);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 68.75rem) {
+  .newuser-container main form {
+    min-width: 36rem;
+  }
+}
+
+@media (max-width: 56.25rem) {
+  .newuser-container main form {
+    min-width: 34rem;
+  }
+}
