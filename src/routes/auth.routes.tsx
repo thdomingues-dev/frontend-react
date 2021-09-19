@@ -7,7 +7,7 @@ const AuthRoutes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Login} exact/>
+        <Route path="/" component={Login} />
       </Switch>
     </BrowserRouter>
   );
