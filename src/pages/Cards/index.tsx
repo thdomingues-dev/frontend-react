@@ -13,14 +13,12 @@ import SearchBox from '../../components/SearchBox';
 import './styles.css';
 
 interface Card {
+  limit: number;
   id: number;
   user_id: number;
   status: string;
-  metadatas: {
-    name: string;
-    digits: number;
-    limit: number;
-  };
+  digits: number;
+  name: string;
 }
 
 const Cards = () => {
@@ -49,7 +47,7 @@ const Cards = () => {
         id: card.id,
         user_id: card.user_id,
         status: "approved",
-        metadatas: card.metadatas,
+        //metadatas: card.metadatas,
       });
 
       await api.post('/audits/', {
@@ -80,7 +78,7 @@ const Cards = () => {
         id: card.id,
         user_id: card.user_id,
         status: "rejected",
-        metadatas: card.metadatas,
+        //metadatas: card.metadatas,
       });
 
       await api.post('/audits/', {
@@ -130,11 +128,9 @@ const Cards = () => {
       id: card.id,
       user_id: card.user_id,
       status: card.status,
-      metadatas: {
-        name: userName,
-        digits: card.metadatas.digits,
-        limit: card.metadatas.limit,
-      }
+      name: userName,
+      digits: card.digits,
+      limit: card.limit,
     });
 
     await api.post('/audits/', {
@@ -142,7 +138,7 @@ const Cards = () => {
       type: "card-name-change",
       before: {
         id: card.id,
-        status: String(card.metadatas.name),
+        status: String(card.name),
       },
       after: {
         id: card.id,
@@ -232,7 +228,7 @@ const Cards = () => {
                     <span>
                       <div>
                         <div className="cards-content-row">
-                          <p>{card.metadatas.name}</p>
+                          <p>{card?.name}</p>
                         </div>
 
                         {(isUpdatingUserName === card.id) &&
@@ -251,7 +247,7 @@ const Cards = () => {
                         }
 
                         <div className="cards-content-row">
-                          <p>{card.metadatas.digits}</p>
+                          <p>{card?.digits}</p>
                         </div>
                       </div>
 
@@ -276,7 +272,7 @@ const Cards = () => {
                         {analyst.roles.includes("n2") &&
                           <div className="cards-content-row">
                             <strong>Limite</strong>
-                            <p>{formatToBRL(card.metadatas.limit)}</p>
+                            <p>{formatToBRL(card?.limit)}</p>
                           </div>
                         }
                       </div>
