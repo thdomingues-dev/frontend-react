@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, FC } from 'react';
 import AuthContext from '../../contexts/auth';
 import { FiCreditCard, FiCheckSquare, FiXSquare } from 'react-icons/fi';
 
@@ -21,7 +21,7 @@ interface Card {
   name: string;
 }
 
-const Cards = () => {
+const Cards: FC = () => {
   const { analyst } = useContext(AuthContext);
 
   const [cards, setCards] = useState<Card[]>([]);
