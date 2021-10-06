@@ -27,11 +27,11 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"yarn run dev:client\"",
+    "start": "concurrently --kill-others \"yarn run dev:client\"",
     "build": "yarn run build:client",
     "build:client": "yarn && react-scripts build",
     "dev:client": "react-scripts start",
-    "start": "pm2-runtime start pm2.json --env production",
+    "dev": "pm2-runtime start pm2.json --env production",
     "serve:kill": "pm2 kill"
   },
   "eslintConfig": {
